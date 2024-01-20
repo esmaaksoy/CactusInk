@@ -1,3 +1,4 @@
+import logo from "../assets/cactus-37894_640.webp";
 const Login = () => {
   return (
     <div className="">
@@ -14,7 +15,6 @@ const Login = () => {
             className="fill-[#AED1B2]"
           ></path>
         </svg>
-       
       </div>
       <h1 className="tracking-widest font-great text-3xl sm:text-6xl font-bold text-white absolute top-[25%] left-[5%] ">
         CactusInk
@@ -23,9 +23,12 @@ const Login = () => {
         <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full ">
           Sign up
         </button>
-        <button className="w-[100%] font-pacifico tracking-widest bg-[#E1E4DD] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full ">
+        <button className="w-[100%] font-pacifico tracking-widest bg-[#E1E4DD] hover:bg-[#AED1B2] text-gray-500 font-bold py-2 px-4 rounded-full ">
           Login
         </button>
+      </div>
+      <div className="absolute bottom-0 right-0 w-[40%] "  >
+        <img src={logo} alt="" />
       </div>
     </div>
   );

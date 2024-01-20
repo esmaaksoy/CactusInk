@@ -1,9 +1,11 @@
 import Login from "./Pages/Login"
+import LoginForm from "./components/auth/LoginForm"
 
 function App() {
   return (
     <div>
-     <Login/>
+     {/* <Login/> */}
+     <LoginForm/>
     </div>
   )
 }
