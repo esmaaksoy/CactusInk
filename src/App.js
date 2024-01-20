@@ -4,8 +4,8 @@ import LoginForm from "./components/auth/LoginForm"
 function App() {
   return (
     <div>
-     {/* <Login/> */}
-     <LoginForm/>
+     <Login/>
+     {/* <LoginForm/> */}
     </div>
   )
 }
