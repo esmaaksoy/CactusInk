@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/cactus-37894_640.webp";
+import logo from "../assets/logo.png"
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
 const Login = () => {
@@ -21,8 +21,8 @@ const Login = () => {
           ></path>
         </svg>
       </div>
-      <h1 className="tracking-widest font-great text-3xl sm:text-6xl font-bold text-white absolute top-[25%] left-[5%] ">
-        CactusInk
+      <h1 className="tracking-widest font-great text-3xl sm:text-6xl font-bold text-[#4B7755] absolute top-[25%] left-[5%] ">
+        Cactus<span className="text-black">Ink</span> 
       </h1>
       {login && !register && <LoginForm/>}
       {!login && register && <RegisterForm/>}
