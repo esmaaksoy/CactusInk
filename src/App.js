@@ -1,7 +1,9 @@
+import Login from "./Pages/Login"
+
 function App() {
   return (
     <div>
-      <h1>React App</h1>
+     <Login/>
     </div>
   )
 }
