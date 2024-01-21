@@ -1,6 +1,7 @@
 import About from "./Pages/About"
 import Login from "./Pages/Login"
 import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
 import LoginForm from "./components/auth/LoginForm"
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
      {/* <Login/> */}
      {/* <LoginForm/> */}
      {/* <About/> */}
-   <Footer/>
+   {/* <Footer/> */}
+   <Navbar/>
     </div>
   )
 }

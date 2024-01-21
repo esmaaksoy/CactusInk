@@ -4,7 +4,7 @@ const Footer = () => {
   const data = ["Terms & Conditions", "Privacy Policy", " Cookies"];
   const icon = [facebook, instagram, twitter];
   return (
-    <footer className="bg-[#AED1B2] px-5">
+    <footer className="bg-gray-50 px-5">
       <div className="border-b border-gray-100 pt-8 sm:flex sm:items-center sm:justify-between pb-4">
         <ul className="flex flex-wrap justify-center gap-4 text-xs lg:justify-end">
           {data.map((item, index) => (
