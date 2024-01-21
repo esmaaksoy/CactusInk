@@ -87,3 +87,51 @@ export const PostCard = () => {
     </article>
   );
 };
+export const CommentText = () => {
+  return (
+    <div className="p-8">
+      <div className="flex justify-start items-end mb-5">
+        <img src={pen} alt="" className="w-[50px]" />
+        <p className=" text-[#4B7755]  font-bold uppercase tracking-[0.3rem]">
+          Enter a comment
+        </p>
+      </div>
+      <div className="overflow-hidden">
+        <textarea
+          id="OrderNotes"
+          className="w-full resize-none align-top p-4"
+          rows="4"
+          placeholder="Enter any additional order notes..."
+        ></textarea>
+        <div className="flex justify-center items-end mt-5">
+          <button
+            type="button"
+            className="bg-[#4B7755] hover:bg-[#85B486] text-white py-2 px-4 rounded-full text-lg font-medium w-[50%]"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+export const CommentArea = () => {
+  return (
+    <div>
+      <div className="flex">
+        <img
+          alt="Man"
+          src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          class="h-10 w-10 rounded-full object-cover"
+        />
+        <div>
+          <p className="font-great text-xl">Cyrano de Bergerac</p>
+          <h5 className="font-great text-lg ml-2 text-gray-500">12/05/2016</h5>
+        </div>
+      </div>
+     
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptatem quas saepe nisi nesciunt explicabo fugit illum voluptas, hic inventore!</p>
+      
+    </div>
+  );
+};
