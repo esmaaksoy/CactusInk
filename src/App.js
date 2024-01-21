@@ -2,6 +2,7 @@ import About from "./Pages/About"
 import Detail from "./Pages/Detail"
 import Home from "./Pages/Home"
 import Login from "./Pages/Login"
+import NotFound from "./Pages/NotFound"
 import Card from "./components/Card"
 import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
@@ -20,7 +21,8 @@ function App() {
      {/* <About/> */}
    <Navbar/>
    {/* <Home/> */}
-   <Detail/>
+   {/* <Detail/> */}
+   <NotFound/>
    <Footer/>
    {/* <Card/> */}
     </div>
