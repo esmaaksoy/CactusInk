@@ -12,10 +12,11 @@ function App() {
      {/* <Login/> */}
      {/* <LoginForm/> */}
      {/* <About/> */}
-   {/* <Footer/> */}
-   {/* <Navbar/>
-   <Home/> */}
-   <Card/>
+ 
+   <Navbar/>
+   <Home/>
+     <Footer/>
+   {/* <Card/> */}
     </div>
   )
 }

@@ -2,16 +2,20 @@ import { heart, eye, comment } from "../helpers/icon";
 
 const Card = () => {
   return (
-    <div className="shadow-md px-4">
+    <div className="px-4 py-3">
       <div className="text-center">
-        <h5 className="text-[#C6D4C2] text-sm">THUSDAY, JUNE 1, 2017</h5>
-        <h1 className="text-2xl border-b-2 border-gray-300">
+        <h5 className="text-white text-sm">THUSDAY, JUNE 1, 2017</h5>
+        <div className="flex border-b-2 border-white justify-center items-center">
+            <h1 className="text-2xl  font-pacifico">
           MONTLY FAVOURITES
-        </h1>
+        </h1> 
+        <img src="https://cdn.pixabay.com/photo/2017/03/26/01/00/paint-2174687_640.png" alt="" className="w-[100px]"/>
+        </div>
+       
       </div>
       <div className="pb-2">
         <img
-          src="https://i.pinimg.com/236x/be/cf/e5/becfe51e9472f6d7a11f46c81f8b8095.jpg"
+          src="https://media.istockphoto.com/id/1428256028/tr/foto%C4%9Fraf/fountain-pen-on-written-page.jpg?s=612x612&w=0&k=20&c=QAzt1tCaKde9X60whVEKMzKPBi2xFI1FAYgzb6LaLKc="
           alt=""
           className="pt-3 w-[100%] h-[200px] sm:h-[400px]"
         />
@@ -24,18 +28,18 @@ const Card = () => {
           dolorem esse, fugiat aliquid et obcaecati dolorum ab ex labore quos ad
           hic magnam eaque eveniet vel quisquam iure! Est nihil voluptatum
           molestias praesentium!
-          <button className="bg-transparent border border-transparent text-capitalize text-blue-500 text-[1rem] cursor-pointer pl-1">
+          <button className="bg-transparent border border-transparent text-capitalize text-white font-bold text-[1rem] cursor-pointer pl-1">
             SEE MORE
           </button>
         </p>
       </div>
-      <div className="border-b-2 border-gray-300 pb-2 flex justify-between ">
-        <p className="font-pacifico text-[#C6D4C2]">cyrano de bergerac</p>
-        <p className="font-pacifico text-[#C6D4C2] hidden sm:block">no comments</p>
+      <div className="border-b-2 border-white pb-2 flex justify-between ">
+        <p className="font-pacifico text-[#4B7755]">cyrano de bergerac</p>
+        <p className="font-pacifico text-[#4B7755] hidden sm:block">no comments</p>
         <div className="flex gap-1">
-          <span>{heart}</span>
-          <span>{comment}</span>
-          <span>{eye}</span>
+          <span className="cursor-pointer hover:text-white">{heart}</span>
+          <span className="cursor-pointer hover:text-white">{comment}</span>
+          <span className="cursor-pointer hover:text-white">{eye}</span>
         </div>
       </div>
     </div>

@@ -2,26 +2,13 @@ import { line, notification, write } from "../helpers/icon";
 import logo from "../assets/logo.png";
 const Navbar = () => {
   return (
-    <>
-      {/* <div className="flex items-end justify-center sm:justify-start">
-       <img src={logo} alt="" className="w-[100px]"/>
-       <h1 className="tracking-widest font-great text-5xl font-bold text-[#4B7755]">
-        Cactus<span className="text-black">Ink</span> 
-      </h1>
-      </div> */}
-      {/*
-  Heads up! 👋
-
-  Plugins:
-    - @tailwindcss/forms
-*/}
-      <header className="bg-gray-50">
-        <div className="mx-auto max-w-screen-xl px-4 py-2  flex justify-between">
+      <header className="bg-[#AED1B2] px-12 py-2">
+        <div className="max-w-screen-xl flex justify-between">
           <div className="flex justify-center items-center">
             <ul className="flex gap-2 sm:gap-4">
-              <li className="hover:text-[#4B7755] cursor-pointer text-xl">Home</li>
+              <li className="hover:text-white cursor-pointer text-xl">Home</li>
               {line}
-              <li className="hover:text-[#4B7755] cursor-pointer text-xl">About</li>
+              <li className="hover:text-white cursor-pointer text-xl">About</li>
             </ul>
           </div>
           <div className="hidden sm:flex sm:items-end sm:justify-center ">
@@ -49,7 +36,6 @@ const Navbar = () => {
             </div>
 
             <a href="#" className="block shrink-0">
-              <span className="sr-only">Profile</span>
               <img
                 alt="Man"
                 src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
@@ -59,7 +45,6 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-    </>
   );
 };
 
