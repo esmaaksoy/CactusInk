@@ -1,15 +1,15 @@
 import { heart, eye, comment } from "../helpers/icon";
-
+import ink from "../assets/ink.webp"
 const Card = () => {
   return (
     <div className="px-4 py-3">
       <div className="text-center">
-        <h5 className="text-white text-sm">THUSDAY, JUNE 1, 2017</h5>
+        <h5 className="text-white text-sm ">THUSDAY, JUNE 1, 2017</h5>
         <div className="flex border-b-2 border-white justify-center items-center">
-            <h1 className="text-2xl  font-pacifico">
+            <h1 className="text-lg sm:text-2xl font-pacifico tracking-widest">
           MONTLY FAVOURITES
         </h1> 
-        <img src="https://cdn.pixabay.com/photo/2017/03/26/01/00/paint-2174687_640.png" alt="" className="w-[100px]"/>
+        <img src={ink} alt="" className="hidden sm:block w-[80px]"/>
         </div>
        
       </div>
