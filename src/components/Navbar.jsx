@@ -3,10 +3,13 @@ import logo from "../assets/logo.png";
 import { Fragment } from 'react'
 import {Menu, Transition } from '@headlessui/react'
 import { NavLink } from "react-router-dom";
+import useAuthCalls from "../service/useAuthCalls";
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 const Navbar = () => {
+  const { logout } = useAuthCalls()
+  // const menuItems = [{text:"logout",path}]
   return (
       <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
         <div className="flex justify-between">
@@ -32,12 +35,12 @@ const Navbar = () => {
                 {write}
               </NavLink>
               {line}
-              <a
-                href="#"
+              <NavLink
+                to=""
                 className="block shrink-0 sm:rounded-full sm:bg-white p-2.5 text-[#4B7755] shadow-sm hover:bg-[#AED1B2] hover:text-white"
               >
                 {notification}
-              </a>
+              </NavLink>
               {line}
             </div>
              <Menu as="div" className="relative">
@@ -83,12 +86,12 @@ const Navbar = () => {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <button
+                          onClick={logout}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Logout
-                          </a>
+                          </button>
                         )}
                       </Menu.Item>
                     </Menu.Items>
