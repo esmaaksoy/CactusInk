@@ -10,7 +10,7 @@ import pen from "../assets/pen.webp";
 export const Header = ({ title }) => {
   return (
     <div className="border-b-2 border-white flex justify-center items-center">
-      <p className=" text-[#4B7755]  font-bold uppercase tracking-[0.3rem]">
+      <p className="text-[#4B7755] font-bold uppercase tracking-[0.3rem]">
         {title}
       </p>
       <img src={pen} alt="" className="w-[50px] " />

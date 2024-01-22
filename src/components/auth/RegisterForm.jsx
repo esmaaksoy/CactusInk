@@ -1,103 +1,130 @@
-import React from 'react'
-
+import { Form, Formik } from "formik";
+import React from "react";
+import { object, string } from "yup"
+import useAuthCalls from "../../service/useAuthCalls";
 const RegisterForm = () => {
+  const inputData = [
+    {
+      name: "username",
+      type: "text",
+      placeholder: "User Name",
+    },
+    {
+      name: "firstName",
+      type: "text",
+      placeholder: "First Name",
+    },
+    {
+      name: "lastName",
+      type: "text",
+      placeholder: "Last Name",
+    },
+    {
+      name: "email",
+      type: "email",
+      placeholder: "Email",
+    },
+    {
+      name: "password",
+      type: "password",
+      placeholder: "Password",
+    },
+    {
+      name: "image",
+      type: "url",
+      placeholder: "Image Url",
+    },
+    {
+      name: "city",
+      type: "text",
+      placeholder: "City",
+    },
+    { name: "bio", type: "text", placeholder: "Biography" },
+  ];
+  const registerSchema = object({
+    username: string()
+      .max(10, "The username must be less than 10 characters.")
+      .required(
+        "The username is required."),
+    firstName: string()
+      .max(10, "The first name must be less than 10 characters.")
+      .required(
+        "The first name is required."),
+    lastName: string()
+      .max(10, 
+        "The last name must be less than 10 characters.")
+      .required("The last name is required."),
+    email: string()
+      .email(
+        "Please enter a valid email.")
+      .required(
+        "Email is required."),
+    password: string()
+      .required(
+        "Password is required.")
+      .min(8, "The password must be at least 8 characters.")
+      .matches(/\d+/, 
+      "The password must contain at least one number.")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter.")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter.")
+      .matches(/[!/[@$!%*?&]+/, "Password must contain at least one special character (@$!%*?&)."),
+    city : string().required(
+      "City information is required."),
+      bio: string().required(
+        "Biography information is required.").max(300, "Your biography must be less than 300 characters."),
+        image: string().required("Image url is required")
+  })
+  const { register} = useAuthCalls();
   return (
     <div className="w-[100%] sm:w-[50%] flex flex-col gap-3 p-5">
-         <label
-        htmlFor="UserEmail"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={registerSchema }
+        onSubmit={(values, actions) => {
+          register(values);
+          actions.resetForm();
+          actions.setSubmitting(false);
+        }}
       >
-        <input
-          type="email"
-          id="UserEmail"
-          placeholder="Email"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
+        {({ handleChange, values, touched, errors, handleBlur }) => (
+          <Form>
+            {inputData.map(({ name, type, placeholder }) => (
+              <div key={name}>
+                <label
+                  htmlFor={name}
+                  className="relative block overflow-hidden border-b border-[#4B7755] bg-transparent pt-3 focus-within:border-[#4B7755] mt-4"
+                >
+                  <input
+                    type={type}
+                    id={name}
+                    name={name}
+                    placeholder={placeholder}
+                    value={values[name]}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    autocomplete="off"
+                    className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                  />
 
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Email
-        </span>
-      </label>
-         <label
-        htmlFor="UserEmail"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
-      >
-        <input
-          type="email"
-          id="UserEmail"
-          placeholder="Email"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
-
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Email
-        </span>
-      </label>
-         <label
-        htmlFor="UserEmail"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
-      >
-        <input
-          type="email"
-          id="UserEmail"
-          placeholder="Email"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
-
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Email
-        </span>
-      </label>
-      <label
-        htmlFor="UserEmail"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
-      >
-        <input
-          type="email"
-          id="UserEmail"
-          placeholder="Email"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
-
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Email
-        </span>
-      </label>
-      <label
-        htmlFor="UserEmail"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
-      >
-        <input
-          type="email"
-          id="UserEmail"
-          placeholder="Email"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
-
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Email
-        </span>
-      </label>
-      <label
-        htmlFor="UserPassword"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
-      >
-        <input
-          type="password"
-          id="UserPassword"
-          placeholder="Password"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
-
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Password
-        </span>
-      </label>
-      <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full ">
-         Sign Up
-        </button>
+                  <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-[0.3rem] font-semibold text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+                    {placeholder}
+                  </span>
+                </label>
+                {touched[name] && Boolean(errors[name]) && (
+                  <span className="font-medium tracking-wide text-red-500 text-xs mt-1">
+                    {errors[name]}
+                  </span>
+                )}{" "}
+              </div>
+            ))}
+            <button type="submit" className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full mt-5">
+              Sign Up
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

@@ -1,7 +1,9 @@
 import { Form, Formik } from "formik";
-
+import { IoIosEye } from "react-icons/io";
+import { IoIosEyeOff } from "react-icons/io";
 import { object, string } from "yup";
 import useAuthCalls from "../../service/useAuthCalls";
+import { useState } from "react";
 const LoginForm = () => {
   const loginSchema = object({
     email: string()
@@ -19,6 +21,7 @@ const LoginForm = () => {
       ),
   });
   const { login } = useAuthCalls();
+  const [show, setShow] = useState(false);
   return (
     <div className="w-[50%] flex flex-col gap-3">
       <Formik
@@ -34,7 +37,7 @@ const LoginForm = () => {
           <Form>
             <label
               htmlFor="UserEmail"
-              className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
+              className="relative block overflow-hidden border-b border-[#4B7755] bg-transparent pt-3 focus-within:border-[#4B7755]"
             >
               <input
                 type="email"
@@ -47,29 +50,49 @@ const LoginForm = () => {
                 className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
               />
 
-              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-[0.3rem] font-bold text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
                 Email
               </span>
             </label>
+            {touched.email && Boolean(errors.email) && (
+              <span className="font-medium tracking-wide text-red-500 text-xs mt-1">
+                {errors.email}
+              </span>
+            )}
             <label
               htmlFor="password"
-              className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
+              className="relative mt-3 block overflow-hidden border-b border-[#4B7755] bg-transparent pt-3 focus-within:border-[#4B7755]"
             >
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Password"
-                className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-              />
+              <div className="flex">
+                
+                <input
+                  type={show ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Password"
+                  className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                />
+                <span className="cursor-pointer">
+                  {show ? (
+                    <IoIosEye onClick={() => setShow(false)} className="text-2xl"/>
+                  ) : (
+                    <IoIosEyeOff onClick={() => setShow(true)} className="text-2xl" />
+                  )}
+                </span>
+              </div>
 
-              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-[0.3rem] font-bold text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
                 Password
               </span>
             </label>
+            {touched.password && Boolean(errors.password) && (
+              <span className="font-medium tracking-wide text-red-500 text-xs mt-1">
+                {errors.password}
+              </span>
+            )}
             <button
               type="submit"
               className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full mt-3"
