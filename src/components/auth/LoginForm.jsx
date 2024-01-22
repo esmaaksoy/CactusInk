@@ -1,6 +1,7 @@
 import { Form, Formik } from "formik";
-import React from "react";
 
+import { object, string } from "yup";
+import useAuthCalls from "../../service/useAuthCalls";
 const LoginForm = () => {
   const loginSchema = object({
     email: string()
@@ -17,7 +18,7 @@ const LoginForm = () => {
         "Password must contain at least one special character (@$!%*?&)."
       ),
   });
-  
+  const { login } = useAuthCalls();
   return (
     <div className="w-[50%] flex flex-col gap-3">
       <Formik
@@ -37,7 +38,11 @@ const LoginForm = () => {
             >
               <input
                 type="email"
-                id="UserEmail"
+                name="email"
+                id="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Email"
                 className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
               />
@@ -47,12 +52,16 @@ const LoginForm = () => {
               </span>
             </label>
             <label
-              htmlFor="UserPassword"
+              htmlFor="password"
               className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
             >
               <input
                 type="password"
-                id="UserPassword"
+                id="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Password"
                 className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
               />
@@ -61,7 +70,10 @@ const LoginForm = () => {
                 Password
               </span>
             </label>
-            <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full ">
+            <button
+              type="submit"
+              className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full mt-3"
+            >
               Login
             </button>
           </Form>
