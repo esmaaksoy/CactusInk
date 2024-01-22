@@ -1,41 +1,72 @@
+import { Form, Formik } from "formik";
 import React from "react";
 
 const LoginForm = () => {
+  const loginSchema = object({
+    email: string()
+      .email("Please enter a valid email.")
+      .required("Email is required."),
+    password: string()
+      .required("Password is required.")
+      .min(8, "Password must contain at least 8 characters.")
+      .matches(/\d+/, "Password must contain at least one digit.")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter.")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter.")
+      .matches(
+        /[@$!%*?&]+/,
+        "Password must contain at least one special character (@$!%*?&)."
+      ),
+  });
+  
   return (
     <div className="w-[50%] flex flex-col gap-3">
-      <label
-        htmlFor="UserEmail"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={loginSchema}
+        onSubmit={(values, actions) => {
+          login(values);
+          actions.resetForm();
+          actions.setSubmitting(false);
+        }}
       >
-        <input
-          type="email"
-          id="UserEmail"
-          placeholder="Email"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
+        {({ handleChange, values, touched, errors, handleBlur }) => (
+          <Form>
+            <label
+              htmlFor="UserEmail"
+              className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
+            >
+              <input
+                type="email"
+                id="UserEmail"
+                placeholder="Email"
+                className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+              />
 
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Email
-        </span>
-      </label>
-      <label
-        htmlFor="UserPassword"
-        className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
-      >
-        <input
-          type="password"
-          id="UserPassword"
-          placeholder="Password"
-          className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-        />
+              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+                Email
+              </span>
+            </label>
+            <label
+              htmlFor="UserPassword"
+              className="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-[#4B7755]"
+            >
+              <input
+                type="password"
+                id="UserPassword"
+                placeholder="Password"
+                className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+              />
 
-        <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
-          Password
-        </span>
-      </label>
-      <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full ">
-         Login
-        </button>
+              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-widest font-pacifico text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+                Password
+              </span>
+            </label>
+            <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full ">
+              Login
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

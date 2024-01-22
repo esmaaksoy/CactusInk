@@ -4,7 +4,7 @@ import pen from "../assets/pen.webp"
 const Home = () => {
   return (
     <div className="px-8 py-5 shadow-sm">
-      <div className="p-5 bg-[#4B7755] mb-5 rounded-lg hidden sm:flex sm:justify-between">
+      <div className="p-5 bg-[#4b7755] mb-5 rounded-lg hidden sm:flex sm:justify-between">
         <div className="flex flex-col justify-center">
           <p className="font-great text-white text-5xl tracking-wider">
             Great writers are resilient in all conditions, just like
