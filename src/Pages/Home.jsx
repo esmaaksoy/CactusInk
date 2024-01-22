@@ -1,7 +1,16 @@
 import Card from "../components/Card";
 import RightSide from "../components/RightSide";
 import pen from "../assets/pen.webp"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import useBlogCalls from "../service/useBlogCalls";
 const Home = () => {
+  const {blog} = useSelector((state)=>state.blog)
+  const {getBlogs} = useBlogCalls()
+  useEffect(() => {
+  getBlogs()
+  }, [])
+  
   return (
     <div className="px-8 py-5 shadow-sm">
       <div className="p-5 bg-[#4b7755] mb-5 rounded-lg hidden sm:flex sm:justify-between">
@@ -21,9 +30,9 @@ const Home = () => {
       </div>
       <div className="flex gap-5">
         <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 bg-[#AED1B2] rounded-lg">
-          <Card />
-          <Card />
-          <Card />
+          {blog.map((item)=> <Card {...item}/>)}
+        
+      
         </div>
         <RightSide/>
       </div>
