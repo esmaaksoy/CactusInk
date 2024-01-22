@@ -28,7 +28,7 @@ const Login = () => {
       {!login && register && <RegisterForm/>}
       {!login && !register && (  
         <>     
-      <div className="w-[50%] flex flex-col gap-5 absolute bottom-[5%] left-[30%]">
+      <div className="w-[50%] flex flex-col gap-5 absolute bottom-[5%] left-[30%] z-10">
         <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full" onClick={() => setRegister(true)}>
           Sign up
         </button>

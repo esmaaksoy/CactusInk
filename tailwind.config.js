@@ -9,7 +9,6 @@ module.exports = {
     extend: {
       fontFamily: {
         pacifico: ['Pacifico', 'cursive', ...defaultTheme.fontFamily.sans],
-        alex: ["Alex Brush", "cursive", ...defaultTheme.fontFamily.sans],
         great: ["Great Vibes", "cursive", ...defaultTheme.fontFamily.sans],
       },
     },

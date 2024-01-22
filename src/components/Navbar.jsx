@@ -8,7 +8,7 @@ function classNames(...classes) {
 }
 const Navbar = () => {
   return (
-      <header className="bg-[#AED1B2] px-6 py-2 md:px-12">
+      <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
         <div className="flex justify-between">
           <div className="flex justify-center items-center">
             <div className="flex gap-2 sm:gap-4">
@@ -25,12 +25,12 @@ const Navbar = () => {
           </div>
           <div className="flex items-center justify-end gap-4">
             <div className="flex items-center sm:gap-4">
-              <a
-                href="#"
+              <NavLink
+                to="/new-blog/"
                 className="block shrink-0 sm:rounded-full sm:bg-white p-2.5 text-[#4B7755] shadow-sm hover:bg-[#AED1B2] hover:text-white"
               >
                 {write}
-              </a>
+              </NavLink>
               {line}
               <a
                 href="#"
@@ -77,7 +77,7 @@ const Navbar = () => {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            Draf
                           </a>
                         )}
                       </Menu.Item>
@@ -87,7 +87,7 @@ const Navbar = () => {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
+                            Logout
                           </a>
                         )}
                       </Menu.Item>

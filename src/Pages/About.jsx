@@ -1,7 +1,7 @@
 import cactus from "../assets/cactus.png";
 const About = () => {
   return (
-    <div className=" min-h-screen">
+    <div className="min-h-screen">
       <div className="absolute bottom-0 w-[100%]">
         <img src={cactus} alt="" className="w-[100%]" />
       </div>
@@ -19,9 +19,10 @@ const About = () => {
             quis minus quidem officiis. Laborum, quis autem.
           </h5>
         </div>
-        <div></div>
+        {/* <div></div> */}
       </div>
     </div>
+
   );
 };
 

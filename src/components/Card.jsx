@@ -1,5 +1,6 @@
 import { heart, eye, comment } from "../helpers/icon";
 import ink from "../assets/ink.webp"
+import { useNavigate } from "react-router-dom";
 const Card = () => {
     const navigate = useNavigate()
     const id = 5555
