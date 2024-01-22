@@ -2,14 +2,17 @@ import { line, notification, write } from "../helpers/icon";
 import logo from "../assets/logo.png";
 import { Fragment } from 'react'
 import {Menu, Transition } from '@headlessui/react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAuthCalls from "../service/useAuthCalls";
+import { useSelector } from "react-redux";
+import avatar from "../assets/avatar.webp"
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 const Navbar = () => {
   const { logout } = useAuthCalls()
-  // const menuItems = [{text:"logout",path}]
+  const { user } = useSelector((state) => state.auth)
+const navigate = useNavigate()
   return (
       <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
         <div className="flex justify-between">
@@ -49,7 +52,7 @@ const Navbar = () => {
                       <span className="absolute -inset-1.5" />                     
                       <img
                         className="h-8 w-8 sm:h-10 sm:w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={user ?  user.image : avatar}
                         alt=""
                       />
                     </Menu.Button>
@@ -66,31 +69,31 @@ const Navbar = () => {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <NavLink
+                           to=""
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
-                          </a>
+                          </NavLink>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <NavLink
+                           to=""
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Draf
-                          </a>
+                          </NavLink>
                         )}
                       </Menu.Item>
-                      <Menu.Item>
+                      <Menu.Item className="w-[100%] flex">
                         {({ active }) => (
                           <button
-                          onClick={logout}
+                          onClick={user ? logout : ()=>navigate("/auth/")}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Logout
+                            {user ? "Logout" : "Login" }
                           </button>
                         )}
                       </Menu.Item>

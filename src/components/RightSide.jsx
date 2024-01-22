@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import{
     CalendarComp,
     Header,
@@ -6,16 +7,15 @@ import{
   } from "../components/MyComponent";
 
 const RightSide = () => {
+  const { user } = useSelector((state) => state.auth)
   return (
     <div className="hidden lg:block lg:w-[30%] px-6 bg-[#AED1B2] rounded-lg">
-    <UserProfile
-      bio={
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit laboriosam blanditiis alias nam? Accusantium consectetur dicta voluptatibus ea corrupti, eaque quam aliquid rem distinctio, incidunt dignissimos ipsum. Deserunt, accusamus nemo."
+      {user && <UserProfile
+      bio={user.bio}
+      img={user.image
       }
-      img={
-        "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-      }
-    />
+    /> }
+   
     <Header title={"search the blog"} />
     {/* ..............search............... */}
     <div className="pt-3 flex gap-2">
