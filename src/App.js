@@ -1,33 +1,17 @@
-import About from "./Pages/About"
-import Detail from "./Pages/Detail"
-import Home from "./Pages/Home"
-import Login from "./Pages/Login"
-import NotFound from "./Pages/NotFound"
-import Card from "./components/Card"
-import Footer from "./components/Footer"
-import Navbar from "./components/Navbar"
-import LoginForm from "./components/auth/LoginForm"
-import { PrimeReactProvider } from 'primereact/api';
+import About from "./Pages/About";
+import Detail from "./Pages/Detail";
+import Home from "./Pages/Home";
+
+import { PrimeReactProvider } from "primereact/api";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
-        
+import AppRouter from "./router/AppRouter";
+
 function App() {
-  
   return (
-    <PrimeReactProvider value={{ unstyled: false}}>
-      
-    <div >
-     {/* <Login/> */}
-     {/* <LoginForm/> */}
-     {/* <About/> */}
-   <Navbar/>
-   {/* <Home/> */}
-   {/* <Detail/> */}
-   <NotFound/>
-   <Footer/>
-   {/* <Card/> */}
-    </div>
+    <PrimeReactProvider value={{ unstyled: false }}>
+      <AppRouter />
     </PrimeReactProvider>
-  )
+  );
 }
 
-export default App
+export default App;

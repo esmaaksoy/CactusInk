@@ -32,7 +32,7 @@ const Login = () => {
         <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full" onClick={() => setRegister(true)}>
           Sign up
         </button>
-        <button className="w-[100%] font-pacifico tracking-widest bg-[#E1E4DD] hover:bg-[#AED1B2] text-gray-500 font-bold py-2 px-4 rounded-full" onClick={() => setLogin(true)}>
+        <button className="w-[100%] font-pacifico tracking-widest bg-[#C6D4C2] hover:bg-[#AED1B2] text-gray-500 font-bold py-2 px-4 rounded-full" onClick={() => setLogin(true)}>
           Login
         </button>
       </div>

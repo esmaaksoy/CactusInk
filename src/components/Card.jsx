@@ -1,6 +1,8 @@
 import { heart, eye, comment } from "../helpers/icon";
 import ink from "../assets/ink.webp"
 const Card = () => {
+    const navigate = useNavigate()
+    const id = 5555
   return (
     <div className="px-4 py-3">
       <div className="text-center">
@@ -28,7 +30,7 @@ const Card = () => {
           dolorem esse, fugiat aliquid et obcaecati dolorum ab ex labore quos ad
           hic magnam eaque eveniet vel quisquam iure! Est nihil voluptatum
           molestias praesentium!
-          <button className="bg-transparent border border-transparent text-capitalize text-white font-bold text-[1rem] cursor-pointer pl-1">
+          <button className="bg-transparent border border-transparent text-capitalize text-white font-bold text-[1rem] cursor-pointer pl-1" onClick={()=> navigate(`/detail/${id}`)}>
             SEE MORE
           </button>
         </p>
