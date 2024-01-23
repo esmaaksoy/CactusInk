@@ -1,10 +1,15 @@
 import { useDispatch } from "react-redux";
-import { fetchFail, fetchStart, getBlogSuccess } from "../features/blogSlice";
+import {
+  fetchFail,
+  fetchStart,
+  getBlogSuccess,
+  getLikeSuccess,
+} from "../features/blogSlice";
 import useAxios from "./useAxios";
 
 const useBlogCalls = () => {
   const dispatch = useDispatch();
-  const { axiosPublic } = useAxios();
+  const { axiosPublic, axiosWithToken } = useAxios();
   const getBlogs = async () => {
     dispatch(fetchStart());
     try {
@@ -14,7 +19,18 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-  return { getBlogs };
+  const postLike = async (id) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post(`/blogs/${id}/postLike/`);
+      dispatch(getLikeSuccess());
+      getBlogs();
+      console.log("ess")
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  return { getBlogs, postLike };
 };
 
 export default useBlogCalls;

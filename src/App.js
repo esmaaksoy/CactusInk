@@ -1,7 +1,4 @@
-import About from "./Pages/About";
-import Detail from "./Pages/Detail";
-import Home from "./Pages/Home";
-
+import { ToastContainer } from "react-toastify";
 import { PrimeReactProvider } from "primereact/api";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import AppRouter from "./router/AppRouter";
@@ -16,6 +13,7 @@ function App() {
         <AppRouter />
         </PersistGate>
       </Provider>
+      <ToastContainer />
     </PrimeReactProvider>
   );
 }
