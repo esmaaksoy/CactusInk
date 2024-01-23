@@ -112,7 +112,7 @@ export const eye = (
     />
   </svg>
 );
-export const comment = (
+export const commentIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

@@ -4,6 +4,7 @@ import {
   fetchStart,
   getBlogSuccess,
   getLikeSuccess,
+  getDetailSuccess,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 
@@ -25,12 +26,30 @@ const useBlogCalls = () => {
       await axiosWithToken.post(`/blogs/${id}/postLike/`);
       dispatch(getLikeSuccess());
       getBlogs();
-      console.log("ess")
+      console.log("ess");
     } catch (error) {
       dispatch(fetchFail());
     }
   };
-  return { getBlogs, postLike };
+  const getDetail = async (id) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken(`/blogs/${id}`);
+      dispatch(getDetailSuccess(data.data));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  const postComment = async(commentInfo)=>{
+    dispatch(fetchStart());
+    try {
+     await axiosWithToken.post("/comments/", commentInfo);
+     getDetail(commentInfo.blogId)
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  }
+  return { getBlogs, postLike, getDetail,postComment };
 };
 
 export default useBlogCalls;

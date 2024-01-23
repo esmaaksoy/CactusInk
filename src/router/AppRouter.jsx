@@ -18,8 +18,8 @@ const AppRouter = () => {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<NotFound />} />{" "}
+          <Route path="detail/:id" element={<Detail />} />
           <Route path="" element={<PrivateRouter />}>
-            <Route path="detail/:id" element={<Detail />} />
             <Route path="new-blog" element={<NewBlog />} />
           </Route>
         </Route>

@@ -10,10 +10,7 @@ const RightSide = () => {
   const { user } = useSelector((state) => state.auth)
   return (
     <div className="hidden lg:block lg:w-[30%] px-6 bg-[#AED1B2] rounded-lg">
-      {user && <UserProfile
-      bio={user.bio}
-      img={user.image
-      }
+      {user && <UserProfile user={user}
     /> }
    
     <Header title={"search the blog"} />
