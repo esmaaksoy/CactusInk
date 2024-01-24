@@ -7,9 +7,11 @@ import { FaHeart } from "react-icons/fa";
 import { Calendar } from "primereact/calendar";
 import { useState } from "react";
 import pen from "../assets/pen.webp";
+import { useSelector } from "react-redux";
+import avatar from "../assets/avatar.webp"
 export const Header = ({ title }) => {
   return (
-    <div className="border-b-2 border-white flex justify-center items-center">
+    <div className="border-b-2 border-white flex justify-center items-end">
       <p className="text-[#4B7755] font-bold uppercase tracking-[0.3rem]">
         {title}
       </p>
@@ -18,18 +20,19 @@ export const Header = ({ title }) => {
   );
 };
 
-export const UserProfile = ({ user}) => {
+export const UserProfile = () => {
+  const { user} = useSelector((state)=>state.auth)
 
   return (
     <div className="p-4">
       <div className="flex justify-center items-center pb-4">
         <img
           alt="avatar"
-          // src={}
+          src={user?.image || avatar}
           className="h-[150px] w-[150px] rounded-full object-cover"
         />
       </div>
-      {/* <p className="text-center">{}</p> */}
+      <p className="text-center">{user?.bio}</p>
       <div className="flex gap-3 justify-center items-center pt-8">
         <FaFacebookF />
         <FaInstagram />

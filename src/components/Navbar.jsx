@@ -13,6 +13,7 @@ const Navbar = () => {
   const { logout } = useAuthCalls()
   const { user } = useSelector((state) => state.auth)
 const navigate = useNavigate()
+console.log(user)
   return (
       <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
         <div className="flex justify-between">
@@ -52,7 +53,7 @@ const navigate = useNavigate()
                       <span className="absolute -inset-1.5" />                     
                       <img
                         className="h-8 w-8 sm:h-10 sm:w-10 rounded-full"
-                        src={user ?  user.image : avatar}
+                        src={user?.image || avatar}
                         alt=""
                       />
                     </Menu.Button>

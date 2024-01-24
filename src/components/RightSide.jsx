@@ -8,13 +8,13 @@ import{
 
 const RightSide = () => {
   const { user } = useSelector((state) => state.auth)
+
   return (
     <div className="hidden lg:block lg:w-[30%] px-6 bg-[#AED1B2] rounded-lg">
-      {user && <UserProfile user={user}
-    /> }
+      {user && <UserProfile /> }
    
     <Header title={"search the blog"} />
-    {/* ..............search............... */}
+
     <div className="pt-3 flex gap-2">
       <input
         type="text"

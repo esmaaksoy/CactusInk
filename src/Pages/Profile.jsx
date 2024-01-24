@@ -12,9 +12,9 @@ const Profile = () => {
      getProfile(user?._id)
     }, [])
     
-  console.log(userBlog)
+
   return (
-    <div className="m-10 flex flex-col gap-5">
+    <div className="m-10 flex flex-col gap-5 min-h-screen">
         {userBlog.map((item)=>(<Card {...item}/>))}
     </div>
   )

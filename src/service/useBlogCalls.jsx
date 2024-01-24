@@ -9,6 +9,7 @@ import {
   getProfileSuccess,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
+import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 
 const useBlogCalls = () => {
   const dispatch = useDispatch();
@@ -26,8 +27,10 @@ const useBlogCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post("/blogs/", blogInfo);
+      toastSuccessNotify("The blog has been successfully created")
     } catch (error) {
       dispatch(fetchFail());
+      toastErrorNotify("Oops, an error occurred.")
     }
   };
   const postLike = async (id) => {
