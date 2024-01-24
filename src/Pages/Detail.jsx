@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import useBlogCalls from "../service/useBlogCalls";
-import avatar from "../assets/avatar.webp"
+import avatar from "../assets/avatar.webp";
 import UserIcon from "../components/UserIcon";
 import CreateComment from "../components/CreateComment";
 const Detail = () => {
@@ -20,10 +20,19 @@ const Detail = () => {
   useEffect(() => {
     getDetail(id);
   }, []);
-  const { content, title, comments, image, userId, likes, countOfVisitors,createdAt,_id } =
-    detail;
-    const date = new Date(createdAt).toLocaleDateString("en-US");
-
+  const {
+    content,
+    title,
+    comments,
+    image,
+    userId,
+    likes,
+    countOfVisitors,
+    createdAt,
+    _id,
+  } = detail;
+  const date = new Date(createdAt).toLocaleDateString("en-US");
+  const { user } = useSelector((state) => state.auth);
   return (
     <div className="flex gap-5 my-6 mx-12">
       <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 bg-[#AED1B2] rounded-lg p-9">
@@ -59,16 +68,24 @@ const Detail = () => {
             <div className="ml-5">
               {" "}
               <p className="font-great text-3xl">{userId?.username}</p>
-              <p className="font-great text-2xl mt-1">{userId?.firstName} {userId?.lastName}</p>
+              <p className="font-great text-2xl mt-1">
+                {userId?.firstName} {userId?.lastName}
+              </p>
             </div>
           </div>
+          {user?._id === userId?._id && (
+            <div className="flex gap-5">
+              <button className="bg-black text-white">DELETE</button>
+              <button className="bg-black text-white">Update</button>
+            </div>
+          )}
         </div>
         <UserIcon
           likes={likes}
           comments={comments}
           countOfVisitors={countOfVisitors}
         />
-        <CreateComment id={_id}/>
+        <CreateComment id={_id} />
         {comments?.map((item) => (
           <Comments item={item} />
         ))}

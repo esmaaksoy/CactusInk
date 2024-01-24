@@ -8,22 +8,25 @@ import Detail from "../Pages/Detail";
 import Dashboard from "../Pages/Dashboard";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../Pages/NewBlog";
+import Profile from "../Pages/Profile";
+import { useState } from "react";
 
 const AppRouter = () => {
+  const [showButton, setShowButton] = useState(false)
   return (
     <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Dashboard />}>
-          <Route index element={<Home />} />
+          <Route index element={<Home showButton={showButton} />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<NotFound />} />{" "}
           <Route path="detail/:id" element={<Detail />} />
           <Route path="" element={<PrivateRouter />}>
             <Route path="new-blog" element={<NewBlog />} />
+            <Route path="profile" element={<Profile/>}/>
           </Route>
         </Route>
-
         <Route path="/auth" element={<Login />} />
       </Routes>
     </>

@@ -14,7 +14,7 @@ const Card = ({
   const navigate = useNavigate();
   const date = new Date(createdAt).toLocaleDateString("en-US");
   return (
-    <div className="px-4 py-3">
+    <div className="px-4 py-3 bg-[#AED1B2]">
       <div className="text-center">
         <h5 className="text-white text-sm ">{date}</h5>
         <div className="flex border-b-2 border-white justify-center items-center">

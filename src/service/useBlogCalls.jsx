@@ -6,6 +6,7 @@ import {
   getLikeSuccess,
   getDetailSuccess,
   getCategorySuccess,
+  getProfileSuccess,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 
@@ -15,7 +16,7 @@ const useBlogCalls = () => {
   const getBlogs = async () => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic("/blogs/");
+      const { data } = await axiosPublic("/blogs?limit=10000");
       dispatch(getBlogSuccess(data.data));
     } catch (error) {
       dispatch(fetchFail());
@@ -66,8 +67,17 @@ const useBlogCalls = () => {
     } catch (error) {
       dispatch(fetchFail());
     }
-  }
-  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories };
+  };
+  const getProfile = async(id)=>{
+    dispatch(fetchStart());
+    try {
+      const {data} = await axiosWithToken(`/blogs?author=${id}&limit=10000`);
+      dispatch(getProfileSuccess(data.data))
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile };
 };
 
 export default useBlogCalls;
