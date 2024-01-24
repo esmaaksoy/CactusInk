@@ -122,9 +122,11 @@ import React, { useState } from "react";
 import { Editor } from "primereact/editor";
 import { InputText } from "primereact/inputtext";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { CascadeSelect } from "primereact/cascadeselect";
 const NewBlog = () => {
   const [text, setText] = useState("");
   const [value, setValue] = useState("");
+
   return (
     <div className=" mx-20 my-10 bg-[#AED1B2] p-10">
       <div className="card flex mb-5">
@@ -137,45 +139,61 @@ const NewBlog = () => {
       </div>
       <div className="flex items-center gap-4 mb-3">
         <div className="w-[50%]">
-           <input
-          type="url"
-          name="title"
-          id="image"
-          placeholder="Enter image url"
-          autoComplete="address-level2"
-          className="w-[100%] rounded-md border-0 p-5 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
-        /> 
+          <input
+            type="url"
+            name="title"
+            id="image"
+            placeholder="Enter image url"
+            autoComplete="address-level2"
+            className="w-[100%] rounded-md border-0 p-5 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          />
         </div>
-        
 
-          <div className="flex justify-center rounded-lg border border-dashed border-white w-[50%]">
-            <div className="text-center">
-              <PhotoIcon
-                className="mx-auto h-12 w-12 text-gray-300"
-                aria-hidden="true"
-              />
-              <div className="flex text-md leading-6 text-gray-600">
-                <label
-                  htmlFor="file-upload"
-                  className="relative cursor-pointer rounded-md font-semibold text-indigo-700 focus-within:outline-none hover:text-indigo-500"
-                >
-                  <span>Upload a file</span>
-                  <input
-                    id="file-upload"
-                    name="file-upload"
-                    type="file"
-                    className="sr-only"
-                  />
-                </label>
-                <p className="pl-1">or drag and drop</p>
-              </div>
-              <p className="text-xs leading-5 text-gray-600">
-                PNG, JPG, GIF up to 10MB
-              </p>
+        <div className="flex justify-center rounded-lg border border-dashed border-white w-[50%]">
+          <div className="text-center">
+            <PhotoIcon
+              className="mx-auto h-12 w-12 text-gray-300"
+              aria-hidden="true"
+            />
+            <div className="flex text-md leading-6 text-gray-600">
+              <label
+                htmlFor="file-upload"
+                className="relative cursor-pointer rounded-md font-semibold text-indigo-700 focus-within:outline-none hover:text-indigo-500"
+              >
+                <span>Upload a file</span>
+                <input
+                  id="file-upload"
+                  name="file-upload"
+                  type="file"
+                  className="sr-only"
+                />
+              </label>
+              <p className="pl-1">or drag and drop</p>
             </div>
+            <p className="text-xs leading-5 text-gray-600">
+              PNG, JPG, GIF up to 10MB
+            </p>
           </div>
-        
+        </div>
       </div>
+
+      <div className="p-2 bg-white my-4 rounded-lg">
+        <select
+          name="HeadlineAct"
+          id="HeadlineAct"
+          className="w-full text-gray-700 sm:text-sm p-4 outline-none"
+        >
+          <option value="">Please select</option>
+          <option value="JM">John Mayer</option>
+          <option value="SRV">Stevie Ray Vaughn</option>
+          <option value="JH">Jimi Hendrix</option>
+          <option value="BBK">B.B King</option>
+          <option value="AK">Albert King</option>
+          <option value="BG">Buddy Guy</option>
+          <option value="EC">Eric Clapton</option>
+        </select>
+      </div>
+
       <div className="card">
         <Editor
           value={text}
@@ -183,9 +201,10 @@ const NewBlog = () => {
           style={{ height: "320px" }}
         />
       </div>
+
       <div className="w-[100%] flex gap-3 mt-10 items-end justify-end">
         <button className="w-[10%]  bg-[#4B7755] hover:bg-[#C6D4C2] text-white font-bold p-2 rounded-full">
-        Save as Draft
+          Save as Draft
         </button>
         <button className="w-[10%]  tracking-widest bg-[#85B486] hover:bg-[#C6D4C2] text-white font-bold p-2 rounded-full">
           Publish
