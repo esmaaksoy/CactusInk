@@ -5,6 +5,7 @@ import {
   getBlogSuccess,
   getLikeSuccess,
   getDetailSuccess,
+  getCategorySuccess,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 
@@ -16,6 +17,14 @@ const useBlogCalls = () => {
     try {
       const { data } = await axiosPublic("/blogs/");
       dispatch(getBlogSuccess(data.data));
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  const postBlogs = async (blogInfo) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post("/blogs/", blogInfo);
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -40,16 +49,25 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-  const postComment = async(commentInfo)=>{
+  const postComment = async (commentInfo) => {
     dispatch(fetchStart());
     try {
-     await axiosWithToken.post("/comments/", commentInfo);
-     getDetail(commentInfo.blogId)
+      await axiosWithToken.post("/comments/", commentInfo);
+      getDetail(commentInfo.blogId);
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  };
+  const getCategories = async()=>{
+    dispatch(fetchStart());
+    try {
+      const {data} = await axiosWithToken("/categories/");
+      dispatch(getCategorySuccess(data.data))
     } catch (error) {
       dispatch(fetchFail());
     }
   }
-  return { getBlogs, postLike, getDetail,postComment };
+  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories };
 };
 
 export default useBlogCalls;

@@ -32,7 +32,7 @@ const Card = ({
         />
       </div>
       <div className="pb-5">
-        <p className="line-clamp-5">{content}</p>
+        <p className="line-clamp-5" dangerouslySetInnerHTML={{ __html: content }}></p>
         <button
           className="bg-transparent border border-transparent text-capitalize text-white font-bold text-[1rem] cursor-pointer pl-1"
           onClick={() => navigate(`/detail/${_id}/`)}
