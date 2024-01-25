@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
 import { Editor } from "primereact/editor";
-import { InputText } from "primereact/inputtext";
-
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
-import { toastSuccessNotify } from "../helpers/ToastNotify";
-
-const BlogForm = ({title}) => {
+const BlogForm = ({title:prevTitle, content:prevContent, image:prevImage, categoryId:prevCategoryID, id }) => {
     const [text, setText] = useState("");
-    const [value, setValue] = useState("");
-    const { postBlogs, getCategories } = useBlogCalls();
+    const { postBlogs, getCategories, putBlogs } = useBlogCalls();
     const { categories } = useSelector((state) => state.blog);
     const [data, setData] = useState({
-      categoryId: "",
-      title: "",
-      content: text,
-      image: "",
+      categoryId: prevCategoryID || "",
+      title:  prevTitle || "",
+      content: prevContent || text,
+      image: prevImage || "",
       isPublish: true,
     });
     const handleChange = (e) => {
@@ -26,7 +21,11 @@ const BlogForm = ({title}) => {
       setData((prevData) => ({ ...prevData, content: e.htmlValue }));
     };
     const handleSubmit = (isPublish) => {
-      postBlogs({ ...data, isPublish });
+      if(id){
+        putBlogs(id,{ ...data, isPublish })
+      }else{
+        postBlogs({ ...data, isPublish });
+      }     
     };
     useEffect(() => {
       getCategories();
@@ -43,13 +42,6 @@ const BlogForm = ({title}) => {
             autoComplete="off"
             className="w-[100%] rounded-md border-0 p-5 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
           />
-        {/* <InputText
-          name="title"
-          value={data.title || ""}
-          onChange={handleChange}
-          className="w-full p-5 focus:outline-none"
-          placeholder="Enter a title"
-        /> */}
       </div>
       <div className="flex items-center gap-4 mb-3 ">
         <div className="w-full">
@@ -85,8 +77,7 @@ const BlogForm = ({title}) => {
       <div className="card">
         <Editor
           name="content"
-       
-          value={text}
+          value={text || data.content || ""}
           onTextChange={handleEditorChange}
           style={{ height: "320px" }}
         />

@@ -6,7 +6,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import RightSide from "../components/RightSide";
 import Comments from "../components/Comments";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import useBlogCalls from "../service/useBlogCalls";
@@ -16,10 +16,11 @@ import CreateComment from "../components/CreateComment";
 import Modal from "../components/Modal";
 import { FaRegEdit } from "react-icons/fa";
 import { LuMoreVertical } from "react-icons/lu";
+import { toastSuccessNotify } from "../helpers/ToastNotify";
 const Detail = () => {
   const { id } = useParams();
   const { detail } = useSelector((state) => state.blog);
-  const { getDetail } = useBlogCalls();
+  const { getDetail, deleteBlogs } = useBlogCalls();
   useEffect(() => {
     getDetail(id);
   }, []);
@@ -32,11 +33,18 @@ const Detail = () => {
     likes,
     countOfVisitors,
     createdAt,
+    categoryId,
     _id,
   } = detail;
   const date = new Date(createdAt).toLocaleDateString("en-US");
   const { user } = useSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
+  const handleButtonClick = () => {
+    deleteBlogs(_id);
+    navigate("/profile");
+    toastSuccessNotify("Blog deleted")
+  };
+  const navigate = useNavigate()
   
   return (
     <div className="flex gap-5 my-6 mx-12 min-h-screen">
@@ -87,7 +95,7 @@ const Detail = () => {
           </div> */}
           <div className="flex justify-center items-center ">
             <div className="h-20 w-20 rounded-full bg-[#4B7755] mr-3 flex justify-center items-center">
-              <p className="text-4xl text-white font-bold">{userId.username.charAt(0)}</p>
+              <p className="text-4xl text-white font-bold">{userId?.username.charAt(0)}</p>
             </div>
             
             <div>
@@ -107,11 +115,11 @@ const Detail = () => {
             
           </div>
 
-          <Modal open={open} setOpen={setOpen} title={title} />
+          <Modal open={open} setOpen={setOpen} title={title}  content={content} image={image} categoryId={categoryId} id={_id}/>
         </div>
         {user?._id === userId?._id && (
           <div className="flex gap-5">
-            <button className="bg-black text-white">DELETE</button>
+            <button className="bg-black text-white" onClick={handleButtonClick}>DELETE</button>
             <button
               onClick={() => setOpen(true)}
               className="bg-black text-white"

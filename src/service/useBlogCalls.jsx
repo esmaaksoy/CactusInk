@@ -14,10 +14,10 @@ import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
-  const getBlogs = async () => {
+  const getBlogs = async (page) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic("/blogs?limit=10000");
+      const { data } = await axiosPublic(`/blogs?page=${page}&limit=5`);
       dispatch(getBlogSuccess(data.data));
     } catch (error) {
       dispatch(fetchFail());
@@ -33,6 +33,15 @@ const useBlogCalls = () => {
       toastErrorNotify("Oops, an error occurred.")
     }
   };
+  const putBlogs = async(id,blogInfo)=>{
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.put(`/blogs/${id}`, blogInfo);
+      getDetail(id)
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  }
   const postLike = async (id) => {
     dispatch(fetchStart());
     try {
@@ -80,7 +89,15 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile };
+  const deleteBlogs = async(id)=>{
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.delete(`/blogs/${id}`)
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  }
+  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs };
 };
 
 export default useBlogCalls;
