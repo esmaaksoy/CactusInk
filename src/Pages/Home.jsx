@@ -13,10 +13,8 @@ const Home = ({ showButton }) => {
     (state) => state.blog
   );
   const { getBlogs } = useBlogCalls();
-
   const [first, setFirst] = useState(0);
   const [rows, setRows] = useState(3);
-
   const onPageChange = (event) => {
     setFirst(event.first);
     setRows(event.rows);
@@ -24,9 +22,8 @@ const Home = ({ showButton }) => {
   useEffect(() => {
     getBlogs(`${first / rows + 1}`);
   }, [first, rows]);
-
   return (
-    <div className="p-2 sm:px-8 sm:py-5 shadow-sm min-h-screen">
+    <>
       {error && <NotFound />}
       {loading && (
         <div className="flex items-center justify-center h-screen">
@@ -34,7 +31,7 @@ const Home = ({ showButton }) => {
         </div>
       )}
       {!error && !loading && (
-        <>
+        <div className="p-2 sm:px-8 sm:py-5 shadow-sm min-h-screen">
           <div className="p-5 bg-[#4b7755] mb-5 rounded-lg hidden sm:flex sm:justify-between">
             <div className="flex flex-col justify-center">
               <p className="font-great text-white text-5xl tracking-wider">
@@ -47,24 +44,25 @@ const Home = ({ showButton }) => {
             </div>
           </div>
           <div className="flex gap-5">
-            <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 rounded-lg">
+            <div className="w-[100%] lg:w-[70%] flex flex-col gap-10">
               {blog?.map((item, index) => (
-                <Card key={index} {...item} />
+                <Card key={index} {...item} first={first} rows={rows}/>
               ))}
             </div>
             <RightSide />
           </div>
-          <div className="card">
+          <div className="card ">
             <Paginator
               first={first}
               rows={rows}
               totalRecords={totalRecords}
               onPageChange={onPageChange}
+              className="bg-[#AED1B2] mt-4"
             />
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

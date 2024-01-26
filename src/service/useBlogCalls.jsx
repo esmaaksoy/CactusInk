@@ -50,13 +50,12 @@ const useBlogCalls = () => {
         "Update failed.")
     }
   }
-  const postLike = async (id) => {
+  const postLike = async (id,page) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/blogs/${id}/postLike/`);
       dispatch(getLikeSuccess());
-      getBlogs();
-      console.log("ess");
+      getBlogs(page);
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -70,16 +69,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-  const postComment = async (commentInfo) => {
-    dispatch(fetchStart());
-    try {
-      await axiosWithToken.post("/comments/", commentInfo);
-      getDetail(commentInfo.blogId);
-    } catch (error) {
-      dispatch(fetchFail());
-    }
-  };
-  const getCategories = async()=>{
+   const getCategories = async()=>{
     dispatch(fetchStart());
     try {
       const {data} = await axiosWithToken("/categories/");
@@ -88,7 +78,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-  const getProfile = async(id)=>{
+   const getProfile = async(id)=>{
     dispatch(fetchStart());
     try {
       const {data} = await axiosWithToken(`/blogs?author=${id}&limit=10000`);
@@ -97,6 +87,15 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+  const postComment = async (commentInfo) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.post("/comments/", commentInfo);
+      getDetail(commentInfo.blogId);
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  }; 
   const deleteBlogs = async(id)=>{
     dispatch(fetchStart());
     try {
@@ -114,5 +113,4 @@ const useBlogCalls = () => {
   }
   return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs,getNews };
 };
-
 export default useBlogCalls;

@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import useAuthCalls from "../service/useAuthCalls";
 import { useSelector } from "react-redux";
 import avatar from "../assets/avatar.webp"
+import useBlogCalls from "../service/useBlogCalls";
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -13,7 +14,6 @@ const Navbar = () => {
   const { logout } = useAuthCalls()
   const { user } = useSelector((state) => state.auth)
 const navigate = useNavigate()
-
   return (
       <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
         <div className="flex justify-between">
@@ -73,6 +73,7 @@ const navigate = useNavigate()
                           <NavLink
                            to="/profile/"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                         
                           >
                             Your Profile
                           </NavLink>

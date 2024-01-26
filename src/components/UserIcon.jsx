@@ -2,14 +2,14 @@ import { heart, eye, commentIcon } from "../helpers/icon";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
 import { toastWarnNotify } from "../helpers/ToastNotify";
-const UserIcon = ({ countOfVisitors, id, comments, likes }) => {
+const UserIcon = ({ countOfVisitors, id, comments, likes,first,rows }) => {
   const { postLike } = useBlogCalls();
   const { user } = useSelector((state) => state.auth);
   const icons = [
     {
       icon: heart,
       number: likes?.length,
-      onClick: () => (user ? postLike(id) : toastWarnNotify("You must login")),
+      onClick: () => (user ? postLike(id,`${first / rows + 1}`) : toastWarnNotify("You must login")),
       style: `cursor-pointer text-gray-500 hover:text-red-500 ${
         likes?.includes(user._id) && "text-red-500"
       }`,
@@ -17,6 +17,7 @@ const UserIcon = ({ countOfVisitors, id, comments, likes }) => {
     { icon: commentIcon, number: comments?.length, style:"text-gray-500" },
     { icon: eye, number: countOfVisitors, style: "text-gray-500" },
   ];
+
   return (
     <div className="flex gap-2 items-end">
       {icons.map(({ icon, number, onClick, style }, index) => (

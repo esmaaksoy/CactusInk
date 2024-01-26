@@ -50,7 +50,6 @@ const LoginForm = () => {
                 autoComplete="off"
                 className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
               />
-
               <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-[0.3rem] font-bold text-[#4B7755] transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
                 Email
               </span>
@@ -64,8 +63,7 @@ const LoginForm = () => {
               htmlFor="password"
               className="relative mt-3 block overflow-hidden border-b border-[#4B7755] bg-transparent pt-3 focus-within:border-[#4B7755]"
             >
-              <div className="flex">
-                
+              <div className="flex">                
                 <input
                   type={show ? "text" : "password"}
                   id="password"
@@ -84,7 +82,6 @@ const LoginForm = () => {
                   )}
                 </span>
               </div>
-
               <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-[0.3rem] font-bold text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
                 Password
               </span>

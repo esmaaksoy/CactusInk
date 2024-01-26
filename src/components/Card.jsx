@@ -10,12 +10,14 @@ const Card = ({
   title,
   countOfVisitors,
   _id,
+  first,
+  rows
  
 }) => {
   const navigate = useNavigate();
   const date = new Date(createdAt).toLocaleDateString("en-US");
   return (
-    <div className="px-4 py-3 bg-[#AED1B2]">
+    <div className="px-4 py-3 bg-[#AED1B2] rounded-lg">
       <div className="sm:text-center">
         <h5 className="text-white text-sm ">{date}</h5>
         <div className="flex border-b-2 border-white sm:justify-center items-center ">
@@ -47,6 +49,7 @@ const Card = ({
           comments={comments}
           countOfVisitors={countOfVisitors}
           id={_id}
+          first={first} rows={rows}
         />
       </div>
     </div>

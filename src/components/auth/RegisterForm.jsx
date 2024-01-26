@@ -1,7 +1,9 @@
 import { Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { object, string } from "yup"
 import useAuthCalls from "../../service/useAuthCalls";
+import { IoIosEye } from "react-icons/io";
+import { IoIosEyeOff } from "react-icons/io";
 const RegisterForm = () => {
   const inputData = [
     {
@@ -19,16 +21,7 @@ const RegisterForm = () => {
       type: "text",
       placeholder: "Last Name",
     },
-    {
-      name: "email",
-      type: "email",
-      placeholder: "Email",
-    },
-    {
-      name: "password",
-      type: "password",
-      placeholder: "Password",
-    },
+   
     {
       name: "image",
       type: "url",
@@ -40,6 +33,11 @@ const RegisterForm = () => {
       placeholder: "City",
     },
     { name: "bio", type: "text", placeholder: "Biography" },
+    {
+      name: "email",
+      type: "email",
+      placeholder: "Email",
+    },
   ];
   const registerSchema = object({
     username: string()
@@ -75,6 +73,7 @@ const RegisterForm = () => {
         image: string().required("Image url is required")
   })
   const { register} = useAuthCalls();
+  const [show, setShow] = useState(false);
   return (
     <div className="w-[100%] sm:w-[50%] flex flex-col gap-3 p-5">
       <Formik
@@ -118,6 +117,33 @@ const RegisterForm = () => {
                 )}{" "}
               </div>
             ))}
+            <label
+              htmlFor="password"
+              className="relative mt-3 block overflow-hidden border-b border-[#4B7755] bg-transparent pt-3 focus-within:border-[#4B7755]"
+            >
+              <div className="flex">                
+                <input
+                  type={show ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Password"
+                  className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                />
+                <span className="cursor-pointer">
+                  {show ? (
+                    <IoIosEye onClick={() => setShow(false)} className="text-2xl"/>
+                  ) : (
+                    <IoIosEyeOff onClick={() => setShow(true)} className="text-2xl" />
+                  )}
+                </span>
+              </div>
+              <span className="absolute start-0 top-2 -translate-y-1/2 text-base tracking-[0.3rem] font-bold text-[#4B7755]  transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+                Password
+              </span>
+            </label>
             <button type="submit" className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full mt-5">
               Sign Up
             </button>
