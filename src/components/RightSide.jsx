@@ -5,10 +5,17 @@ import{
     UserProfile,
     PostCard,
   } from "../components/MyComponent";
+import { useEffect, useState } from "react";
+import useBlogCalls from "../service/useBlogCalls";
 
 const RightSide = () => {
   const { user } = useSelector((state) => state.auth)
-
+  const {getNews} = useBlogCalls()
+  const {news} = useSelector((state)=>state.blog)
+useEffect(() => {
+getNews()
+}, [])
+console.log(news)
   return (
     <div className="hidden lg:block lg:w-[30%] px-6 bg-[#AED1B2] rounded-lg">
       {user && <UserProfile /> }
@@ -26,9 +33,10 @@ const RightSide = () => {
     </div>
     <CalendarComp />
     <Header title={"popular post"} />
-    <PostCard />
-    <PostCard />
-    <PostCard />
+    {news.map((item,index)=><PostCard key={index} {...item}/>)}
+    
+    {/* <PostCard />
+    <PostCard /> */}
   </div>
   )
 }

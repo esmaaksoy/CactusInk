@@ -8,7 +8,7 @@ import { Calendar } from "primereact/calendar";
 import { useState } from "react";
 import pen from "../assets/pen.webp";
 import { useSelector } from "react-redux";
-import avatar from "../assets/avatar.webp"
+import avatar from "../assets/avatar.webp";
 export const Header = ({ title }) => {
   return (
     <div className="border-b-2 border-white flex justify-center items-end">
@@ -21,7 +21,7 @@ export const Header = ({ title }) => {
 };
 
 export const UserProfile = () => {
-  const { user} = useSelector((state)=>state.auth)
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <div className="p-4">
@@ -59,33 +59,27 @@ export const CalendarComp = () => {
   );
 };
 
-export const PostCard = () => {
+export const PostCard = ({ content, title, urlToImage,
+  publishedAt }) => {
+  const date = new Date(
+    publishedAt).toLocaleDateString("en-US");
   return (
     <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg mt-4 mb-4">
       <img
         alt="Office"
-        src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+        src={urlToImage}
         className="h-56 w-full object-cover "
       />
 
       <div className="bg-white p-4 sm:p-6">
         <time dateTime="2022-10-10" className="block text-xs text-gray-500">
-          {" "}
-          10th Oct 2022{" "}
+       {date}
         </time>
 
- 
-          <h3 className="mt-0.5 text-lg text-gray-900">
-            How to position your furniture for positivity
-          </h3>
-  
+        <h3 className="mt-0.5 text-lg text-gray-900">{title}</h3>
 
         <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-          dolores, possimus pariatur animi temporibus nesciunt praesentium
-          dolore sed nulla ipsum eveniet corporis quidem, mollitia itaque minus
-          soluta, voluptates neque explicabo tempora nisi culpa eius atque
-          dignissimos. Molestias explicabo corporis voluptatem?
+          {content}
         </p>
       </div>
     </article>
@@ -106,7 +100,7 @@ export const PostCard = () => {
 //         </div>
 //       </div>
 //       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam voluptatem quas saepe nisi nesciunt explicabo fugit illum voluptas, hic inventore!</p>
-      
+
 //     </div>
 //   );
 // };

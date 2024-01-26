@@ -7,13 +7,16 @@ import {
   getDetailSuccess,
   getCategorySuccess,
   getProfileSuccess,
+  getNewsSuccess,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import axios from "axios";
 
 const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
+  const apiKey = process.env.REACT_APP_API_KEY;
   const getBlogs = async (page,limit) => {
     dispatch(fetchStart());
     try {
@@ -102,7 +105,16 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   }
-  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs };
+  const getNews = async()=>{
+    dispatch(fetchStart());
+    try {
+    const {data} = await axios(`https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=${apiKey}&pageSize=3&page=3`)
+    dispatch(getNewsSuccess(data.articles))  
+    } catch (error) {
+      dispatch(fetchFail());
+    }
+  }
+  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs,getNews };
 };
 
 export default useBlogCalls;
