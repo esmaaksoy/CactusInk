@@ -6,7 +6,7 @@ const initialState = {
   userBlog:[],
   totalRecords:0,
   news:[],
-  loading: "",
+  loading: false,
   error: false,
   token: "",
 };

@@ -106,12 +106,10 @@ const useBlogCalls = () => {
     }
   }
   const getNews = async()=>{
-    dispatch(fetchStart());
     try {
     const {data} = await axios(`https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=${apiKey}&pageSize=3&page=3`)
     dispatch(getNewsSuccess(data.articles))  
-    } catch (error) {
-      dispatch(fetchFail());
+    } catch (error) { 
     }
   }
   return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs,getNews };

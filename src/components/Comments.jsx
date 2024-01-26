@@ -5,7 +5,7 @@ const Comments = ({ item }) => {
       <div className="flex">
         <div className="h-10 w-10 rounded-full bg-[#4B7755] mr-3 flex justify-center items-center">
           <p className="text-xl text-white font-bold">
-            {userId?.username.charAt(0)}
+            {userId?.firstName.charAt(0)}
           </p>
         </div>
         <div>
