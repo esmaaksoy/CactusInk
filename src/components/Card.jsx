@@ -40,7 +40,7 @@ const Card = ({
           SEE MORE
         </button>
       </div>
-      <div className="border-b-2 border-white pb-2 flex justify-end ">
+      <div className="pb-2 flex justify-end ">
         {/* <p className="font-pacifico text-[#4B7755]">cyrano de bergerac</p>
         <p className="font-pacifico text-[#4B7755] hidden sm:block">
           no comments

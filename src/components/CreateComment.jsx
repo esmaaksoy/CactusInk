@@ -18,7 +18,7 @@ const CreateComment = ({ id }) => {
   };
   const {user} = useSelector((state)=>state.auth)
   return (
-    <div className="p-8">
+    <div>
       <div className="flex justify-start items-end mb-5">
         <img src={pen} alt="" className="w-[50px]" />
         <p className=" text-[#4B7755]  font-bold uppercase tracking-[0.3rem]">

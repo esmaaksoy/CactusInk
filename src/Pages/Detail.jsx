@@ -45,25 +45,16 @@ const Detail = () => {
     toastSuccessNotify("Blog deleted")
   };
   const navigate = useNavigate()
-  
+  console.log(comments)
   return (
     <div className="flex gap-5 my-6 mx-12 min-h-screen">
-      
       <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 bg-[#AED1B2] rounded-lg p-9">
       <div className="flex flex-col items-end border-b-1 border-gray-100 border-t-1">
-        <div className="flex items-end">
-              <UserIcon
-            likes={likes}
-            comments={comments}
-            countOfVisitors={countOfVisitors}
-          />
-            <LuMoreVertical className="text-4xl text-gray-500"/>
-          </div>
-        
+       
           {user?._id === userId?._id && (
           <div className="flex gap-2">
-            <FaRegEdit className="text-3xl text-white"/>
-            <MdDelete className="text-3xl text-white"  onClick={() => setOpen(true)}/>
+            <FaRegEdit onClick={() => setOpen(true)} className="text-3xl text-white cursor-pointer"/>
+            <MdDelete onClick={handleButtonClick} className="text-3xl text-white cursor-pointer" />
           
           </div>
         )}
@@ -117,21 +108,16 @@ const Detail = () => {
 
           <Modal open={open} setOpen={setOpen} title={title}  content={content} image={image} categoryId={categoryId} id={_id}/>
         </div>
-        {user?._id === userId?._id && (
-          <div className="flex gap-5">
-            <button className="bg-black text-white" onClick={handleButtonClick}>DELETE</button>
-            <button
-              onClick={() => setOpen(true)}
-              className="bg-black text-white"
-            >
-              Update
-            </button>
-          </div>
-        )}
-        <CreateComment id={_id} />
-        {comments?.map((item) => (
+      
+        <div className="p-8">
+           <CreateComment id={_id} />
+        </div>
+       <div className="p-8">
+          {comments?.map((item) => (
           <Comments item={item} />
         ))}
+       </div>
+      
       </div>
       <RightSide />
     </div>

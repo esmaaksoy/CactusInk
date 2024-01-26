@@ -13,7 +13,7 @@ const Navbar = () => {
   const { logout } = useAuthCalls()
   const { user } = useSelector((state) => state.auth)
 const navigate = useNavigate()
-console.log(user)
+
   return (
       <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
         <div className="flex justify-between">

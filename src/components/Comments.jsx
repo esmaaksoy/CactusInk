@@ -1,21 +1,22 @@
-import avatar from "../assets/avatar.webp"
-const Comments = ({item}) => {
- const {createdAt, userId,comment} = item
+const Comments = ({ item }) => {
+  const { createdAt, userId, comment } = item;
   return (
     <div>
-    <div className="flex">
-      <img
-        alt="Man"
-        src={avatar}
-        className="h-10 w-10 rounded-full object-cover"
-      />
-      <div>
-        <p className="font-great text-xl">{userId.username}</p>
-        <h5 className="font-great text-lg ml-2 text-gray-500">{new Date(createdAt).toLocaleDateString("en-US")}</h5>
+      <div className="flex">
+        <div className="h-10 w-10 rounded-full bg-[#4B7755] mr-3 flex justify-center items-center">
+          <p className="text-xl text-white font-bold">
+            {userId?.username.charAt(0)}
+          </p>
+        </div>
+        <div>
+          <p className="font-great text-xl">{userId.username}</p>
+          <h5 className="text-lg text-gray-500">
+            {new Date(createdAt).toLocaleDateString("en-US")}
+          </h5>
+          <p>{comment}</p>
+        </div>
       </div>
     </div>
-    <p>{comment}</p>
-  </div>
-  )
-}
-export default Comments
+  );
+};
+export default Comments;

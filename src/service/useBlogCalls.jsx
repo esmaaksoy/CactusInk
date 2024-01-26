@@ -14,11 +14,13 @@ import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
-  const getBlogs = async (page) => {
+  const getBlogs = async (page,limit) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic(`/blogs?page=${page}&limit=5`);
-      dispatch(getBlogSuccess(data.data));
+      const { data } = await axiosPublic(`/blogs?page=${page}&limit=3`);
+      const apiData= data.data
+      const totalRecords= data.details.totalRecords
+      dispatch(getBlogSuccess({apiData, totalRecords}));
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -38,8 +40,11 @@ const useBlogCalls = () => {
     try {
       await axiosWithToken.put(`/blogs/${id}`, blogInfo);
       getDetail(id)
+      toastSuccessNotify("Blog updated.")
     } catch (error) {
       dispatch(fetchFail());
+      toastErrorNotify(
+        "Update failed.")
     }
   }
   const postLike = async (id) => {

@@ -7,19 +7,20 @@ import useBlogCalls from "../service/useBlogCalls";
 import React, { useState } from "react";
 import { Paginator } from 'primereact/paginator';
 const Home = ({showButton}) => {
-  const {blog} = useSelector((state)=>state.blog)
+  const {blog, totalRecords} = useSelector((state)=>state.blog)
   const {getBlogs} = useBlogCalls()
-  useEffect(() => {
-  getBlogs(page)
-  }, [])
+  
   const [first, setFirst] = useState(0);
-  const [rows, setRows] = useState(10);
+  const [rows, setRows] = useState(3);
 
   const onPageChange = (event) => {
       setFirst(event.first);
       setRows(event.rows);
   };
-
+  useEffect(() => {
+    getBlogs(`${first / rows + 1}`)
+    }, [first,rows])
+    console.log(blog)
   return (
     <div className="px-8 py-5 shadow-sm min-h-screen">
       <div className="p-5 bg-[#4b7755] mb-5 rounded-lg hidden sm:flex sm:justify-between">
@@ -39,13 +40,13 @@ const Home = ({showButton}) => {
       </div>
       <div className="flex gap-5">
         <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 rounded-lg">
-          {blog.map((item)=> <Card {...item}/>)}
-        </div>
-        <div className="card">
-            <Paginator first={first} rows={rows} totalRecords={120} rowsPerPageOptions={[10, 20, 30]} onPageChange={onPageChange} />
+          {blog?.map((item, index)=> <Card key={index} {...item}/>)}
         </div>
         <RightSide/>
       </div>
+      <div className="card">
+            <Paginator first={first} rows={rows} totalRecords={totalRecords} onPageChange={onPageChange} />
+        </div>
     </div>
   );
 };

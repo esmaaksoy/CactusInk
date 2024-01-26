@@ -68,8 +68,8 @@ const BlogForm = ({title:prevTitle, content:prevContent, image:prevImage, catego
           className="w-full text-gray-700 sm:text-sm p-4 outline-none"
         >
           <option value="">Please select</option>
-          {categories.map((item) => (
-            <option value={item._id}>{item.name}</option>
+          {categories.map((item,index) => (
+            <option key={index} value={item._id}>{item.name}</option>
           ))}
         </select>
       </div>

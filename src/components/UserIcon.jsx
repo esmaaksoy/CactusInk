@@ -19,8 +19,8 @@ const UserIcon = ({ countOfVisitors, id, comments, likes }) => {
   ];
   return (
     <div className="flex gap-2 items-end">
-      {icons.map(({ icon, number, onClick, style }) => (
-        <div className="relative w-10 h-10 flex items-end">
+      {icons.map(({ icon, number, onClick, style }, index) => (
+        <div key={index} className="relative w-10 h-10 flex items-end">
           <span className={style} onClick={onClick}>
             {icon}
           </span>
