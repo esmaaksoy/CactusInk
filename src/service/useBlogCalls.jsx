@@ -17,7 +17,7 @@ const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
   const apiKey = process.env.REACT_APP_API_KEY;
-  const getBlogs = async (page,limit) => {
+  const getBlogs = async (page) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosPublic(`/blogs?page=${page}&limit=3`);

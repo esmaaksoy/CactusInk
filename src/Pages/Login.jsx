@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../assets/logo.png"
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
+import { NavLink } from "react-router-dom";
 const Login = () => {
   const [login, setLogin] = useState(false)
   const [register, setRegister] = useState(false)
@@ -21,9 +22,9 @@ const Login = () => {
           ></path>
         </svg>
       </div>
-      <h1 className="tracking-widest font-great text-3xl sm:text-6xl font-bold text-[#4B7755] absolute top-[25%] left-[5%] ">
+      <NavLink to="/" className="tracking-widest font-great text-3xl sm:text-6xl font-bold text-[#4B7755] absolute top-[25%] left-[5%] ">
         Cactus<span className="text-black">Ink</span> 
-      </h1>
+      </NavLink>
       {login && !register && <LoginForm/>}
       {!login && register && <RegisterForm/>}
       {!login && !register && (  
