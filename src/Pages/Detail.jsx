@@ -47,10 +47,9 @@ const Detail = () => {
   const navigate = useNavigate()
   console.log(comments)
   return (
-    <div className="flex gap-5 my-6 mx-12 min-h-screen">
-      <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 bg-[#AED1B2] rounded-lg p-9">
-      <div className="flex flex-col items-end border-b-1 border-gray-100 border-t-1">
-       
+    <div className="flex gap-5 m-2 sm:my-6 sm:mx-12 min-h-screen">
+      <div className="w-[100%] lg:w-[70%] flex flex-col gap-5 bg-[#AED1B2] rounded-lg p-4 sm:p-9">
+      <div className="flex flex-col items-end border-b-1 border-gray-100 border-t-1">      
           {user?._id === userId?._id && (
           <div className="flex gap-2">
             <FaRegEdit onClick={() => setOpen(true)} className="text-3xl text-white cursor-pointer"/>
@@ -67,31 +66,22 @@ const Detail = () => {
           />
         </div>
         <div className="mb-6">
-          <h1 className="pb-3 text-2xl font-bold tracking-[0.2rem]">{title}</h1>
-          <p dangerouslySetInnerHTML={{ __html: content }}></p>
-        </div>
-       
-        <div className="flex justify-end">
-          <p className="font-great text-5xl mt-1 tracking-[0.3rem]">
+          <h1 className="pb-3 text-2xl font-bold tracking-[0.2rem] break-all">{title}</h1>
+          <p dangerouslySetInnerHTML={{ __html: content }} className="break-all"></p>
+        </div>      
+        <div className="flex sm:justify-end">
+          <p className="font-great text-xl sm:text-5xl mt-1 tracking-[0.3rem]">
             {userId?.firstName} {userId?.lastName}
           </p>
         </div>
-        <div className="flex justify-end border-b-2 items-end border-white">
-          {/* <div>
-              <UserIcon
-            likes={likes}
-            comments={comments}
-            countOfVisitors={countOfVisitors}
-          />
-          </div> */}
+        <div className="flex sm:justify-end border-b-2 items-end border-white">       
           <div className="flex justify-center items-center ">
-            <div className="h-20 w-20 rounded-full bg-[#4B7755] mr-3 flex justify-center items-center">
-              <p className="text-4xl text-white font-bold">{userId?.username.charAt(0)}</p>
-            </div>
-            
+            <div className="h-10 w-10 sm:h-20 sm:w-20 rounded-full bg-[#4B7755] mr-3 flex justify-center items-center">
+              <p className="text-xl sm:text-4xl text-white font-bold">{userId?.username.charAt(0)}</p>
+            </div>           
             <div>
               <div>
-                <h5 className="text-2xl tracking-wide">{date}</h5>
+                <h5 className="text-md sm:text-2xl tracking-wide">{date}</h5>
               </div>
               <div className="flex gap-3 pt-3">
                 <FaFacebookF className="cursor-pointer hover:opacity-50"/>
@@ -109,10 +99,10 @@ const Detail = () => {
           <Modal open={open} setOpen={setOpen} title={title}  content={content} image={image} categoryId={categoryId} id={_id}/>
         </div>
       
-        <div className="p-8">
+        <div className="sm:p-8">
            <CreateComment id={_id} />
         </div>
-       <div className="p-8">
+       <div className="sm:p-8">
           {comments?.map((item) => (
           <Comments item={item} />
         ))}

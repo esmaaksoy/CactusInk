@@ -22,7 +22,7 @@ const Home = ({showButton}) => {
     }, [first,rows])
     console.log(blog)
   return (
-    <div className="px-8 py-5 shadow-sm min-h-screen">
+    <div className="p-2 sm:px-8 sm:py-5 shadow-sm min-h-screen">
       <div className="p-5 bg-[#4b7755] mb-5 rounded-lg hidden sm:flex sm:justify-between">
         <div className="flex flex-col justify-center">
           <p className="font-great text-white text-5xl tracking-wider">

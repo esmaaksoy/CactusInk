@@ -25,7 +25,7 @@ export default function Modal({ open, setOpen,title, content,image, categoryId, 
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div className="fixed inset-0 z-10 sm:w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
@@ -36,7 +36,7 @@ export default function Modal({ open, setOpen,title, content,image, categoryId, 
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-[#AED1B2] p-10  text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-[#AED1B2] p-3 sm:p-10  text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <BlogForm title={title}  content={content} image={image} categoryId={categoryId} id={id}/>
               </Dialog.Panel>
             </Transition.Child>

@@ -39,13 +39,13 @@ const navigate = useNavigate()
                 {write}
               </NavLink>
               {line}
-              <NavLink
+              {/* <NavLink
                 to=""
                 className="block shrink-0 sm:rounded-full sm:bg-white p-2.5 text-[#4B7755] shadow-sm hover:bg-[#AED1B2] hover:text-white"
               >
                 {notification}
               </NavLink>
-              {line}
+              {line} */}
             </div>
              <Menu as="div" className="relative">
                   <div>
@@ -68,7 +68,7 @@ const navigate = useNavigate()
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
+                      {user && ( <Menu.Item>
                         {({ active }) => (
                           <NavLink
                            to="/profile/"
@@ -77,17 +77,7 @@ const navigate = useNavigate()
                             Your Profile
                           </NavLink>
                         )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <NavLink
-                           to=""
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Draf
-                          </NavLink>
-                        )}
-                      </Menu.Item>
+                      </Menu.Item>)}                    
                       <Menu.Item className="w-[100%] flex">
                         {({ active }) => (
                           <button
