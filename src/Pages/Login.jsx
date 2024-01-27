@@ -25,8 +25,8 @@ const Login = () => {
       <NavLink to="/" className="tracking-widest font-great text-3xl sm:text-6xl font-bold text-[#4B7755] absolute top-[25%] left-[5%] ">
         Cactus<span className="text-black">Ink</span> 
       </NavLink>
-      {login && !register && <LoginForm/>}
-      {!login && register && <RegisterForm/>}
+      {login && !register && <LoginForm />}
+      {!login && register && <RegisterForm login={login} setLogin={setLogin}/>}
       {!login && !register && (  
         <>     
       <div className="w-[50%] flex flex-col gap-5 absolute bottom-[5%] left-[30%] z-10">

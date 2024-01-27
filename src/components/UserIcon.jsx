@@ -9,7 +9,7 @@ const UserIcon = ({ countOfVisitors, id, comments, likes,first,rows }) => {
     {
       icon: heart,
       number: likes?.length,
-      onClick: () => (user ? postLike(id,`${first / rows + 1}`) : toastWarnNotify("You must login")),
+      onClick: () => (user ? postLike(id,`${first/rows + 1}`) : toastWarnNotify("You must login")),
       style: `cursor-pointer text-gray-500 hover:text-red-500 ${
         likes?.includes(user._id) && "text-red-500"
       }`,

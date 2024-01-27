@@ -5,15 +5,11 @@ import {
   UserProfile,
   PostCard,
 } from "../components/MyComponent";
-import { useEffect } from "react";
 import useBlogCalls from "../service/useBlogCalls";
 const RightSide = ({ search, setSearch, first, rows }) => {
   const { user } = useSelector((state) => state.auth);
-  const { getNews, getBlogs } = useBlogCalls();
-  const { news } = useSelector((state) => state.blog);
-  useEffect(() => {
-    getNews();
-  }, []);
+  const { getBlogs } = useBlogCalls();
+  const {blog } = useSelector((state) => state.blog);
   const handleSearch = () => {
     setSearch("");
     getBlogs(`${first / rows + 1}`, search);
@@ -38,7 +34,7 @@ const RightSide = ({ search, setSearch, first, rows }) => {
       </div>
       <CalendarComp />
       <Header title={"popular post"} />
-      {news.map((item, index) => (
+      {blog.slice(-3).map((item, index) => (
         <PostCard key={index} {...item} />
       ))}
     </div>

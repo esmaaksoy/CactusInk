@@ -53,7 +53,7 @@ const useBlogCalls = () => {
   const postLike = async (id, page) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`/blogs/${id}/postLike/`);
+      await axiosWithToken.post(`/blogs/${id}/postLike`);
       dispatch(getLikeSuccess());
       getBlogs(page);
     } catch (error) {
@@ -104,14 +104,6 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-  const getNews = async () => {
-    try {
-      const { data } = await axios(
-        `https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=${apiKey}&pageSize=3&page=3`
-      );
-      dispatch(getNewsSuccess(data.articles));
-    } catch (error) {}
-  };
   return {
     getBlogs,
     postLike,
@@ -122,7 +114,7 @@ const useBlogCalls = () => {
     getProfile,
     putBlogs,
     deleteBlogs,
-    getNews,
+
   };
 };
 export default useBlogCalls;

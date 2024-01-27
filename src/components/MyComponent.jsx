@@ -9,7 +9,7 @@ import { useState } from "react";
 import pen from "../assets/pen.webp";
 import { useSelector } from "react-redux";
 import avatar from "../assets/avatar.webp";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 export const Header = ({ title }) => {
   return (
     <div className="border-b-2 border-white flex justify-center items-end">
@@ -20,7 +20,6 @@ export const Header = ({ title }) => {
     </div>
   );
 };
-
 export const UserProfile = () => {
   const { user } = useSelector((state) => state.auth);
 
@@ -45,7 +44,6 @@ export const UserProfile = () => {
     </div>
   );
 };
-
 export const CalendarComp = () => {
   const [date, setDate] = useState(null);
   return (
@@ -59,28 +57,18 @@ export const CalendarComp = () => {
     </div>
   );
 };
-
-export const PostCard = ({ content, title, urlToImage,
-  publishedAt }) => {
-  const date = new Date(
-    publishedAt).toLocaleDateString("en-US");
+export const PostCard = ({ content, createdAt, image, title }) => {
+  const date = new Date(createdAt).toLocaleDateString("en-US");
   return (
     <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg mt-4 mb-4">
-      <img
-        alt="Office"
-        src={urlToImage}
-        className="h-56 w-full object-cover "
-      />
+      <img alt="Office" src={image} className="h-56 w-full object-cover " />
 
       <div className="bg-white p-4 sm:p-6">
         <time dateTime="2022-10-10" className="block text-xs text-gray-500">
-       {date}
+          {date}
         </time>
-
         <h3 className="mt-0.5 text-lg text-gray-900">{title}</h3>
-
-        <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-          {content}
+        <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500" dangerouslySetInnerHTML={{ __html: content }}>
         </p>
       </div>
     </article>
@@ -105,13 +93,13 @@ export const PostCard = ({ content, title, urlToImage,
 //     </div>
 //   );
 // };
-export const NoData = ({title})=> {
-  return(
+export const NoData = ({ title }) => {
+  return (
     <div className="flex items-end justify-center mt-20">
-    <img src={logo} alt="" className="w-[80px] mr-3" />
-  <h1 className="uppercase tracking-widest text-gray-500 font-bold">
-  {title}
-  </h1>
-  </div>
-  )
-}
+      <img src={logo} alt="" className="w-[80px] mr-3" />
+      <h1 className="uppercase tracking-widest text-gray-500 font-bold">
+        {title}
+      </h1>
+    </div>
+  );
+};
