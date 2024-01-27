@@ -105,12 +105,12 @@ export const PostCard = ({ content, title, urlToImage,
 //     </div>
 //   );
 // };
-export const NoData = ()=> {
+export const NoData = ({title})=> {
   return(
     <div className="flex items-end justify-center mt-20">
     <img src={logo} alt="" className="w-[80px] mr-3" />
   <h1 className="uppercase tracking-widest text-gray-500 font-bold">
-  Can not be found blog
+  {title}
   </h1>
   </div>
   )

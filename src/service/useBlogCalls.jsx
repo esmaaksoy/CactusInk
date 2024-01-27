@@ -16,13 +16,15 @@ const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
   const apiKey = process.env.REACT_APP_API_KEY;
-  const getBlogs = async (page,search) => {
+  const getBlogs = async (page, search) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic(`/blogs?page=${page}&limit=3&search[title]=${search}`);
-      const apiData= data.data
-      const pagination= data.details
-      dispatch(getBlogSuccess({apiData, pagination}));
+      const { data } = await axiosPublic(
+        `/blogs?page=${page}&limit=3&search[title]=${search}`
+      );
+      const apiData = data.data;
+      const pagination = data.details;
+      dispatch(getBlogSuccess({ apiData, pagination }));
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -31,25 +33,24 @@ const useBlogCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post("/blogs/", blogInfo);
-      toastSuccessNotify("The blog has been successfully created")
+      toastSuccessNotify("The blog has been successfully created");
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify("Oops, an error occurred.")
+      toastErrorNotify("Oops, an error occurred.");
     }
   };
-  const putBlogs = async(id,blogInfo)=>{
+  const putBlogs = async (id, blogInfo) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`/blogs/${id}`, blogInfo);
-      getDetail(id)
-      toastSuccessNotify("Blog updated.")
+      getDetail(id);
+      toastSuccessNotify("Blog updated.");
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(
-        "Update failed.")
+      toastErrorNotify("Update failed.");
     }
-  }
-  const postLike = async (id,page) => {
+  };
+  const postLike = async (id, page) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/blogs/${id}/postLike/`);
@@ -68,20 +69,20 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
-   const getCategories = async()=>{
+  const getCategories = async () => {
     dispatch(fetchStart());
     try {
-      const {data} = await axiosWithToken("/categories/");
-      dispatch(getCategorySuccess(data.data))
+      const { data } = await axiosWithToken("/categories/");
+      dispatch(getCategorySuccess(data.data));
     } catch (error) {
       dispatch(fetchFail());
     }
   };
-   const getProfile = async(id)=>{
+  const getProfile = async (id) => {
     dispatch(fetchStart());
     try {
-      const {data} = await axiosWithToken(`/blogs?author=${id}&limit=10000`);
-      dispatch(getProfileSuccess(data.data))
+      const { data } = await axiosWithToken(`/blogs?author=${id}&limit=10000`);
+      dispatch(getProfileSuccess(data.data));
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -94,22 +95,34 @@ const useBlogCalls = () => {
     } catch (error) {
       dispatch(fetchFail());
     }
-  }; 
-  const deleteBlogs = async(id)=>{
+  };
+  const deleteBlogs = async (id) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`/blogs/${id}`)
+      await axiosWithToken.delete(`/blogs/${id}`);
     } catch (error) {
       dispatch(fetchFail());
     }
-  }
-  const getNews = async()=>{
+  };
+  const getNews = async () => {
     try {
-    const {data} = await axios(`https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=${apiKey}&pageSize=3&page=3`)
-    dispatch(getNewsSuccess(data.articles))  
-    } catch (error) { 
-    }
-  }
-  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs,getNews};
+      const { data } = await axios(
+        `https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=${apiKey}&pageSize=3&page=3`
+      );
+      dispatch(getNewsSuccess(data.articles));
+    } catch (error) {}
+  };
+  return {
+    getBlogs,
+    postLike,
+    getDetail,
+    postComment,
+    postBlogs,
+    getCategories,
+    getProfile,
+    putBlogs,
+    deleteBlogs,
+    getNews,
+  };
 };
 export default useBlogCalls;

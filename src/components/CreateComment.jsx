@@ -2,7 +2,6 @@ import { useState } from "react";
 import pen from "../assets/pen.webp";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
-import { toastWarnNotify } from "../helpers/ToastNotify";
 const CreateComment = ({ id }) => {
   const { postComment } = useBlogCalls();
   const [value, setValue] = useState("");
@@ -10,7 +9,6 @@ const CreateComment = ({ id }) => {
     "blogId": id ,
     "comment":value,
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     postComment(commentInfo);

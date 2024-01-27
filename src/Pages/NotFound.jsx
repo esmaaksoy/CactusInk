@@ -1,5 +1,4 @@
 import logo from "../assets/logo.png"
-import {line} from "../helpers/icon"
 const NotFound = () => {
   return (
     <div className="grid h-screen place-content-center px-4">

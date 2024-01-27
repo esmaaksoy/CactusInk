@@ -26,7 +26,7 @@ const RightSide = ({ search, setSearch, first, rows }) => {
         <input
           type="text"
           className="border border-[#E1E4DD] p-2 rounded-md w-[75%]"
-          value={search.toUpperCase() || ""}
+          value={search|| ""}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button

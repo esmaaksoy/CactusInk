@@ -1,11 +1,16 @@
-import { Fragment, useRef} from "react";
+import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-
 import BlogForm from "./BlogForm";
-
-export default function Modal({ open, setOpen,title, content,image, categoryId, id }) {
+export default function Modal({
+  open,
+  setOpen,
+  title,
+  content,
+  image,
+  categoryId,
+  id,
+}) {
   const cancelButtonRef = useRef(null);
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -37,7 +42,13 @@ export default function Modal({ open, setOpen,title, content,image, categoryId, 
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-[#AED1B2] p-3 sm:p-10  text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <BlogForm title={title}  content={content} image={image} categoryId={categoryId} id={id}/>
+                <BlogForm
+                  title={title}
+                  content={content}
+                  image={image}
+                  categoryId={categoryId}
+                  id={id}
+                />
               </Dialog.Panel>
             </Transition.Child>
           </div>

@@ -1,4 +1,3 @@
-import logo from "../assets/logo.png";
 import { facebook, instagram, twitter } from "../helpers/icon";
 const Footer = () => {
   const data = ["Terms & Conditions", "Privacy Policy", " Cookies"];

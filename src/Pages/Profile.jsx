@@ -2,19 +2,19 @@ import { useSelector } from "react-redux";
 import useBlogCalls from "../service/useBlogCalls";
 import { useEffect } from "react";
 import Card from "../components/Card";
-import { Header, UserProfile } from "../components/MyComponent";
+import { Header, NoData, UserProfile } from "../components/MyComponent";
 import NotFound from "./NotFound";
 import { ProgressSpinner } from "primereact/progressspinner";
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const { getProfile } = useBlogCalls();
-  const { userBlog,loading,error } = useSelector((state) => state.blog);
+  const { userBlog, loading, error } = useSelector((state) => state.blog);
   useEffect(() => {
     getProfile(user?._id);
   }, []);
   return (
     <div className="m-2 sm:m-[3.5rem] min-h-screen">
-      {error && <NotFound/>}
+      {error && <NotFound />}
       {loading && (
         <div className="flex items-center justify-center h-screen">
           <ProgressSpinner />
@@ -27,8 +27,12 @@ const Profile = () => {
         <div className="mb-5">
           <Header title={"my articles"} />
         </div>
+        {userBlog.length === 0 && (
+          <div>
+            <NoData title={"You have no articles."} />
+          </div>
+        )}
         <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {" "}
           {userBlog.map((item, index) => (
             <div className="border">
               <p className="p-5 text-[#4B7755]">

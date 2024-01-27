@@ -38,14 +38,7 @@ const navigate = useNavigate()
               >
                 {write}
               </NavLink>
-              {line}
-              {/* <NavLink
-                to=""
-                className="block shrink-0 sm:rounded-full sm:bg-white p-2.5 text-[#4B7755] shadow-sm hover:bg-[#AED1B2] hover:text-white"
-              >
-                {notification}
-              </NavLink>
-              {line} */}
+              {line}         
             </div>
              <Menu as="div" className="relative">
                   <div>
