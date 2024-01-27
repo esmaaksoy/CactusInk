@@ -15,7 +15,7 @@ const Navbar = () => {
   const { user } = useSelector((state) => state.auth)
 const navigate = useNavigate()
   return (
-      <header className="bg-[#AED1B2] px-6 py-2 md:px-12 relative z-10">
+      <header className="bg-[#AED1B2] px-6 py-2 md:px-12">
         <div className="flex justify-between">
           <div className="flex justify-center items-center">
             <div className="flex gap-2 sm:gap-4">
@@ -95,6 +95,7 @@ const navigate = useNavigate()
           </div>
         </div>
       </header>
+      
   );
 };
 

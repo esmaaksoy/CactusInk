@@ -8,8 +8,10 @@ import React, { useState } from "react";
 import { Paginator } from "primereact/paginator";
 import { ProgressSpinner } from "primereact/progressspinner";
 import NotFound from "./NotFound";
+import { NoData } from "../components/MyComponent";
+
 const Home = ({ showButton }) => {
-  const { blog, totalRecords, loading, error } = useSelector(
+  const { blog, pagination, loading, error } = useSelector(
     (state) => state.blog
   );
   const { getBlogs } = useBlogCalls();
@@ -19,9 +21,11 @@ const Home = ({ showButton }) => {
     setFirst(event.first);
     setRows(event.rows);
   };
+  const [search, setSearch] = useState("");
   useEffect(() => {
-    getBlogs(`${first / rows + 1}`);
-  }, [first, rows]);
+    getBlogs(`${first/rows+1}`, search);
+  }, [first,rows]);
+
   return (
     <>
       {error && <NotFound />}
@@ -45,17 +49,23 @@ const Home = ({ showButton }) => {
           </div>
           <div className="flex gap-5">
             <div className="w-[100%] lg:w-[70%] flex flex-col gap-10">
+     {blog.length === 0 && <NoData/>}
               {blog?.map((item, index) => (
-                <Card key={index} {...item} first={first} rows={rows}/>
+                <Card key={index} {...item} first={first} rows={rows} />
               ))}
             </div>
-            <RightSide />
+            <RightSide
+              search={search}
+              setSearch={setSearch}
+              first={first}
+              rows={rows}
+            />
           </div>
           <div className="card ">
             <Paginator
               first={first}
               rows={rows}
-              totalRecords={totalRecords}
+              totalRecords={pagination?.totalRecords}
               onPageChange={onPageChange}
               className="bg-[#AED1B2] mt-4"
             />

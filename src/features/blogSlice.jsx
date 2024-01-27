@@ -4,7 +4,7 @@ const initialState = {
   detail:{},
   categories:[],
   userBlog:[],
-  totalRecords:0,
+  pagination:{},
   news:[],
   loading: false,
   error: false,
@@ -23,7 +23,7 @@ const blogSlice = createSlice({
       state.loading = false;
       state.error = false;
       state.blog = payload.apiData;
-      state.totalRecords =payload.totalRecords
+      state.pagination =payload.pagination
     },
     getLikeSuccess: (state) => {
       state.loading = false;

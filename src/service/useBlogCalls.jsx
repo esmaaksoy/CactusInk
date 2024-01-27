@@ -12,18 +12,17 @@ import {
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 import axios from "axios";
-
 const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
   const apiKey = process.env.REACT_APP_API_KEY;
-  const getBlogs = async (page) => {
+  const getBlogs = async (page,search) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic(`/blogs?page=${page}&limit=3`);
+      const { data } = await axiosPublic(`/blogs?page=${page}&limit=3&search[title]=${search}`);
       const apiData= data.data
-      const totalRecords= data.details.totalRecords
-      dispatch(getBlogSuccess({apiData, totalRecords}));
+      const pagination= data.details
+      dispatch(getBlogSuccess({apiData, pagination}));
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -111,6 +110,6 @@ const useBlogCalls = () => {
     } catch (error) { 
     }
   }
-  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs,getNews };
+  return { getBlogs, postLike, getDetail, postComment, postBlogs,getCategories, getProfile, putBlogs,deleteBlogs,getNews};
 };
 export default useBlogCalls;

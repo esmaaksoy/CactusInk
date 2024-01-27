@@ -9,6 +9,7 @@ import { useState } from "react";
 import pen from "../assets/pen.webp";
 import { useSelector } from "react-redux";
 import avatar from "../assets/avatar.webp";
+import logo from "../assets/logo.png"
 export const Header = ({ title }) => {
   return (
     <div className="border-b-2 border-white flex justify-center items-end">
@@ -104,3 +105,13 @@ export const PostCard = ({ content, title, urlToImage,
 //     </div>
 //   );
 // };
+export const NoData = ()=> {
+  return(
+    <div className="flex items-end justify-center mt-20">
+    <img src={logo} alt="" className="w-[80px] mr-3" />
+  <h1 className="uppercase tracking-widest text-gray-500 font-bold">
+  Can not be found blog
+  </h1>
+  </div>
+  )
+}

@@ -22,7 +22,7 @@ const Card = ({
         <h5 className="text-white text-sm ">{date}</h5>
         <div className="flex border-b-2 border-white sm:justify-center items-center ">
           <h1 className="text-lg sm:text-2xl font-pacifico tracking-widest break-words line-clamp-1">
-            {title}
+            {title.toUpperCase()}
           </h1>
           <img src={ink} alt="ink image" className="hidden sm:block w-[80px]" />
         </div>
