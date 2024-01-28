@@ -1,4 +1,4 @@
-import { line, notification, write } from "../helpers/icon";
+import { line, write } from "../helpers/icon";
 import logo from "../assets/logo.png";
 import { Fragment } from 'react'
 import {Menu, Transition } from '@headlessui/react'
@@ -6,7 +6,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import useAuthCalls from "../service/useAuthCalls";
 import { useSelector } from "react-redux";
 import avatar from "../assets/avatar.webp"
-import useBlogCalls from "../service/useBlogCalls";
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }

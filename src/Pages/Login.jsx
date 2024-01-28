@@ -26,7 +26,7 @@ const Login = () => {
         Cactus<span className="text-black">Ink</span> 
       </NavLink>
       {login && !register && <LoginForm />}
-      {!login && register && <RegisterForm login={login} setLogin={setLogin}/>}
+      {!login && register && <RegisterForm/>}
       {!login && !register && (  
         <>     
       <div className="w-[50%] flex flex-col gap-5 absolute bottom-[5%] left-[30%] z-10">

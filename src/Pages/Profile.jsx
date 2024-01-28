@@ -35,8 +35,8 @@ const Profile = () => {
         <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {userBlog.map((item, index) => (
             <div key={index} className="border">
-              <p className="p-5 text-[#4B7755]">
-                {item.isPublish ? "Publish" : "You published as a draft."}
+              <p className={`p-5 text-xl font-bold ${item.isPublish ? 'text-[#4B7755]' : 'text-white'}`}>
+                {item.isPublish ? "Publish" : "Draft"}
               </p>
               <Card key={index} {...item} />
             </div>

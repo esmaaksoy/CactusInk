@@ -9,8 +9,6 @@ import Dashboard from "../Pages/Dashboard";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../Pages/NewBlog";
 import Profile from "../Pages/Profile";
-import { useState } from "react";
-
 const AppRouter = () => {
   return (
     <>

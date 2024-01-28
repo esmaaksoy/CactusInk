@@ -4,8 +4,7 @@ import { object, string } from "yup";
 import useAuthCalls from "../../service/useAuthCalls";
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import LoginForm from "./LoginForm";
-const RegisterForm = ({ login, setLogin }) => {
+const RegisterForm = () => {
   const inputData = [
     {
       name: "username",

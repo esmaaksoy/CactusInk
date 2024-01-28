@@ -15,9 +15,9 @@ const BlogForm = ({
   const [data, setData] = useState({
     categoryId: prevCategoryID || "",
     title: prevTitle || "",
-    content: prevContent || text,
+    content: prevContent || "",
     image: prevImage || "",
-    isPublish: true,
+    isPublish: "",
   });
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -36,7 +36,7 @@ const BlogForm = ({
   useEffect(() => {
    getCategories()
   }, [])
-  
+  console.log("hello")
   return (
     <div>
       <div className="card flex mb-5">
