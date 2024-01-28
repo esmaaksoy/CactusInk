@@ -1,7 +1,6 @@
 # CactusInk Blog
 This project is a blog site developed using **Node.js** on the backend and **React** on the frontend.
-Users can register and share their articles. Users have the option to save their articles as drafts or publish them directly. They can visit their profiles to edit, delete, or publish their written articles. Additionally, users can comment on and like the published articles. T
-**Redux Toolkit** is chosen for state management in the project. Additionally, the **redux-persist** library is utilized for persisting the Redux state, ensuring that the state is preserved when the application is restarted. **CRUD** operations are performed using API requests, and **Formik** along with **Yup** is preferred for form validation. The UI/UX design is crafted using libraries such as **Tailwind CSS, PrimeReact**, and more.
+Users can register and share their articles. Users have the option to save their articles as drafts or publish them directly. They can visit their profiles to edit, delete, or publish their written articles. Additionally, users can comment on and like the published articles. **Redux Toolkit** is chosen for state management in the project. Additionally, the **redux-persist** library is utilized for persisting the Redux state, ensuring that the state is preserved when the application is restarted. **CRUD** operations are performed using API requests, and **Formik** along with **Yup** is preferred for form validation. The UI/UX design is crafted using libraries such as **Tailwind CSS, PrimeReact**, and more.
 
 ## Screenshots
 ![Project snapshot](./cactus.gif)
