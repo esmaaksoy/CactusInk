@@ -12,13 +12,12 @@ import Profile from "../Pages/Profile";
 import { useState } from "react";
 
 const AppRouter = () => {
-  const [showButton, setShowButton] = useState(false)
   return (
     <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Dashboard />}>
-          <Route index element={<Home showButton={showButton} />} />
+          <Route index element={<Home/>} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<NotFound />} />{" "}
           <Route path="detail/:id" element={<Detail />} />

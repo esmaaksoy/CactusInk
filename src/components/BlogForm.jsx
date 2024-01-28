@@ -1,4 +1,4 @@
-import {useState } from "react";
+import {useEffect, useState } from "react";
 import { Editor } from "primereact/editor";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
@@ -33,6 +33,10 @@ const BlogForm = ({
       postBlogs({ ...data, isPublish });
     }
   };
+  useEffect(() => {
+   getCategories()
+  }, [])
+  
   return (
     <div>
       <div className="card flex mb-5">

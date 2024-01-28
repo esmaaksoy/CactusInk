@@ -9,7 +9,7 @@ import { Paginator } from "primereact/paginator";
 import { ProgressSpinner } from "primereact/progressspinner";
 import NotFound from "./NotFound";
 import { NoData } from "../components/MyComponent";
-const Home = ({ showButton }) => {
+const Home = () => {
   const { blog, pagination, loading, error } = useSelector(
     (state) => state.blog
   );
@@ -22,7 +22,7 @@ const Home = ({ showButton }) => {
   };
   const [search, setSearch] = useState("");
   useEffect(() => {
-    getBlogs(`${first / rows + 1}`, search);
+    getBlogs(`/blogs?page=${first / rows + 1}&limit=3&search[title]=${search}`);
   }, [first, rows]);
   return (
     <>
@@ -49,7 +49,7 @@ const Home = ({ showButton }) => {
             <div className="w-[100%] lg:w-[70%] flex flex-col gap-10">
               {blog.length === 0 && <NoData title={"Can not be found blog"} />}
               {blog?.map((item, index) => (
-                <Card key={index} {...item} first={first} rows={rows} />
+                <Card key={index} {...item} first={first} rows={rows} search={search}/>
               ))}
             </div>
             <RightSide

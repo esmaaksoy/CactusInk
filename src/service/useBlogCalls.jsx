@@ -7,21 +7,16 @@ import {
   getDetailSuccess,
   getCategorySuccess,
   getProfileSuccess,
-  getNewsSuccess,
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
-import axios from "axios";
 const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken } = useAxios();
-  const apiKey = process.env.REACT_APP_API_KEY;
-  const getBlogs = async (page, search) => {
+  const getBlogs = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosPublic(
-        `/blogs?page=${page}&limit=3&search[title]=${search}`
-      );
+      const { data } = await axiosPublic(url);
       const apiData = data.data;
       const pagination = data.details;
       dispatch(getBlogSuccess({ apiData, pagination }));
@@ -50,12 +45,12 @@ const useBlogCalls = () => {
       toastErrorNotify("Update failed.");
     }
   };
-  const postLike = async (id, page) => {
+  const postLike = async (id,url) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/blogs/${id}/postLike`);
       dispatch(getLikeSuccess());
-      getBlogs(page);
+      getBlogs(url);
     } catch (error) {
       dispatch(fetchFail());
     }
