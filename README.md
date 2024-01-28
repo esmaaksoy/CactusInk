@@ -4,7 +4,7 @@ Users can register and share their articles. Users have the option to save their
 **Redux Toolkit** is chosen for state management in the project. Additionally, the **redux-persist** library is utilized for persisting the Redux state, ensuring that the state is preserved when the application is restarted. **CRUD** operations are performed using API requests, and **Formik** along with **Yup** is preferred for form validation. The UI/UX design is crafted using libraries such as **Tailwind CSS, PrimeReact**, and more.
 
 ## Screenshots
-![Project snapshot]()
+![Project snapshot](./cactus.gif)
 [CactusInk Blog Live Page](https://cactusink-esma.netlify.app/)
 
 ## Tech/framework used
