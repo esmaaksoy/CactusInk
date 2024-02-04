@@ -9,6 +9,7 @@ import { Paginator } from "primereact/paginator";
 import { ProgressSpinner } from "primereact/progressspinner";
 import NotFound from "./NotFound";
 import { NoData } from "../components/MyComponent";
+import { Helmet } from 'react-helmet';
 const Home = () => {
   const { blog, pagination, loading, error } = useSelector(
     (state) => state.blog
@@ -26,6 +27,10 @@ const Home = () => {
   }, [first, rows]);
   return (
     <>
+     <Helmet>
+        <title>Home | CactusInk Blog</title>
+        <meta name="description" content="Your page description" />
+      </Helmet>
       {error && <NotFound />}
       {loading && (
         <div className="flex items-center justify-center h-screen">

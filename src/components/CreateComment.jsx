@@ -2,6 +2,7 @@ import { useState } from "react";
 import pen from "../assets/pen.webp";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
+import { toastWarnNotify } from "../helpers/ToastNotify";
 const CreateComment = ({ id }) => {
   const { postComment } = useBlogCalls();
   const [value, setValue] = useState("");
@@ -15,6 +16,12 @@ const CreateComment = ({ id }) => {
    setValue("")
   };
   const {user} = useSelector((state)=>state.auth)
+  const handleClick=()=>{
+    if(!user){
+      toastWarnNotify(
+        "You must log in to add a comment.")
+    }
+  }
   return (
     <div>
       <div className="flex justify-start items-end mb-5">
@@ -32,6 +39,7 @@ const CreateComment = ({ id }) => {
           value={value}
           name="comment"
           onChange={(e) => setValue(e.target.value)}
+          onClick={handleClick}
         ></textarea>
         <div className="flex justify-center items-end mt-5">
           <button

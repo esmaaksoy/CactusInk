@@ -10,6 +10,7 @@ import pen from "../assets/pen.webp";
 import { useSelector } from "react-redux";
 import avatar from "../assets/avatar.webp";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 export const Header = ({ title }) => {
   return (
     <div className="border-b-2 border-white flex justify-center items-end">
@@ -57,10 +58,11 @@ export const CalendarComp = () => {
     </div>
   );
 };
-export const PostCard = ({ content, createdAt, image, title }) => {
+export const PostCard = ({ content, createdAt, image, title, _id }) => {
   const date = new Date(createdAt).toLocaleDateString("en-US");
+  const navigate=useNavigate()
   return (
-    <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg mt-4 mb-4">
+    <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg mt-4 mb-4 cursor-pointer" onClick={() => navigate(`/detail/${_id}`)}>
       <img alt="Office" src={image} className="h-56 w-full object-cover " />
 
       <div className="bg-white p-4 sm:p-6">

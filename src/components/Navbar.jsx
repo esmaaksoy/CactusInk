@@ -23,7 +23,7 @@ const navigate = useNavigate()
               <NavLink to="/about/" className="hover:text-white cursor-pointer text-md sm:text-xl">About</NavLink>
             </div>
           </div>
-          <div className="hidden sm:flex sm:items-end sm:justify-center">
+          <div className="hidden sm:flex sm:items-end sm:justify-center cursor-pointer" onClick={()=>navigate("/")}>
             <img src={logo} alt="" className="w-[50px] lg:w-[80px]" />
             <h1 className="tracking-widest font-great text-3xl lg:text-5xl font-bold text-[#4B7755]">
               Cactus<span className="text-black">Ink</span>

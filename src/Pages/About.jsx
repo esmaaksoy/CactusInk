@@ -5,19 +5,25 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { Helmet } from 'react-helmet';
 const About = () => {
   return (
+    <> 
+     <Helmet>
+        <title>About | CactusInk Blog</title>
+        <meta name="description" content="Your page description" />
+      </Helmet>
     <div className="min-h-screen bg-[#4B7755] flex items-center p-5">
       <div className="flex backdrop-blur-sm bg-[#aed1b2a1] sm:w-[80%] m-auto">
         <div className="w-[100%] lg:w-[50%] p-4 sm:p-10">
           <h1 className="text-[#4B7755] font-great font-bold tracking-[0.3rem] text-4xl border-b-[3px] border-b-[#4B7755]">
             About Us
           </h1>
-          <p className="pt-[1rem]">
+          <div className="pt-[1rem]">
             <p className="text-[#4B7755] font-bold text-xl pb-1">
               CactusInk Blog | Culture, Art, Literature Blog
             </p>
-            CactusInk is a blog that started in January 2024, focusing on
+            <p>  CactusInk is a blog that started in January 2024, focusing on
             culture, art, and literature. The blog covers a wide range of
             topics, including poetry, sculpture, painting, stories, philosophy,
             sociology, media, and anthropology. CactusInk aims to bring together
@@ -28,11 +34,11 @@ const About = () => {
             in the face of everything and everyone, we chose to use a cactus in
             our logo. Thus, our blog is named "cactusink," combining the words
             cactus and ink. We extend our gratitude to all writers and readers
-            who support our voice on this journey to freely express the truth.
+            who support our voice on this journey to freely express the truth.</p>
             <p className="text-[#4B7755] font-bold font-pacifico text-xl tracking-widest">
               CactusInk
             </p>
-          </p>
+          </div>
           <div className="flex gap-3 items-center pt-8">
         <FaFacebookF className="cursor-pointer text-xl hover:text-gray-500"/>
         <FaInstagram className="cursor-pointer text-xl hover:text-gray-500"/>
@@ -47,7 +53,8 @@ const About = () => {
           <img src={logo} alt="" />
         </div>
       </div>
-    </div>
+    </div></>
+   
   );
 };
 

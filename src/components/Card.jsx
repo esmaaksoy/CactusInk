@@ -30,7 +30,7 @@ const Card = ({
         likes?.includes(user._id) && "text-red-500"
       }`,
     },
-    { icon: commentIcon, number: comments?.length, style:"text-gray-500" },
+    { icon: commentIcon, number: comments?.length, style:"text-gray-500"},
     { icon: eye, number: countOfVisitors, style: "text-gray-500" },
   ];
   return (

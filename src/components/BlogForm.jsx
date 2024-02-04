@@ -2,6 +2,7 @@ import {useEffect, useState } from "react";
 import { Editor } from "primereact/editor";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const BlogForm = ({
   title: prevTitle,
   content: prevContent,
@@ -36,7 +37,7 @@ const BlogForm = ({
   useEffect(() => {
    getCategories()
   }, [])
-  console.log("hello")
+  const navigate = useNavigate()
   return (
     <div>
       <div className="card flex mb-5">
@@ -90,13 +91,13 @@ const BlogForm = ({
       </div>
       <div className="w-[100%] flex gap-3 mt-10 items-end justify-end">
         <button
-          onClick={() => handleSubmit(false)}
+          onClick={() =>{handleSubmit(false); navigate("/profile")} }
           className="flex-1 bg-[#4B7755] hover:bg-[#C6D4C2] text-white font-bold p-2 rounded-full"
         >
           Save as Draft
         </button>
         <button
-          onClick={() => handleSubmit(true)}
+          onClick={() =>{handleSubmit(false); navigate("/profile")} }
           className="flex-1 tracking-widest bg-[#85B486] hover:bg-[#C6D4C2] text-white font-bold p-2 rounded-full"
         >
           Publish

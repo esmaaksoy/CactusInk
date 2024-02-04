@@ -3,6 +3,7 @@ import {
   fetchFail,
   fetchStart,
   getBlogSuccess,
+  getAllBlogSuccess,
   getLikeSuccess,
   getDetailSuccess,
   getCategorySuccess,
@@ -10,10 +11,9 @@ import {
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
-
 const useBlogCalls = () => {
   const dispatch = useDispatch();
-  const { axiosPublic, axiosWithToken, axiosNews } = useAxios();
+  const { axiosPublic, axiosWithToken} = useAxios();
   const getBlogs = async (url) => {
     dispatch(fetchStart());
     try {
@@ -23,6 +23,13 @@ const useBlogCalls = () => {
       dispatch(getBlogSuccess({ apiData, pagination }));
     } catch (error) {
       dispatch(fetchFail());
+    }
+  };
+  const getAllBlogs = async () => {
+    try {
+      const { data } = await axiosPublic("/blogs/");
+      dispatch(getAllBlogSuccess(data.data));
+    } catch (error) {
     }
   };
   const postBlogs = async (blogInfo) => {
@@ -103,6 +110,7 @@ const useBlogCalls = () => {
 
   return {
     getBlogs,
+    getAllBlogs,
     postLike,
     getDetail,
     postComment,

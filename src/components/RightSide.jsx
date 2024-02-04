@@ -6,14 +6,19 @@ import {
   PostCard,
 } from "../components/MyComponent";
 import useBlogCalls from "../service/useBlogCalls";
+import { useEffect } from "react";
 const RightSide = ({ search, setSearch, first, rows }) => {
   const { user } = useSelector((state) => state.auth);
-  const { getBlogs} = useBlogCalls();
-  const {blog} = useSelector((state) => state.blog);
+  const { getBlogs,getAllBlogs} = useBlogCalls();
+  const {allBlog } = useSelector((state) => state.blog);
   const handleSearch = () => {
     getBlogs(`/blogs?page=${first / rows + 1}&limit=3&search[title]=${search}`);
     setSearch("");
   };
+  useEffect(() => {
+    getAllBlogs()
+  }, [])
+  
   return (
     <div className="hidden lg:block lg:w-[30%] px-6 bg-[#AED1B2] rounded-lg">
       {user && <UserProfile />}
@@ -34,7 +39,7 @@ const RightSide = ({ search, setSearch, first, rows }) => {
       </div>
       <CalendarComp />
       <Header title={"popular post"} />
-      {blog.slice(-3).map((item, index) => (
+      {allBlog.slice(0, 3).map((item, index) => (
         <PostCard key={index} {...item} />
       ))}
     </div>

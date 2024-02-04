@@ -3,10 +3,16 @@ import logo from "../assets/logo.png"
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
 import { NavLink } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 const Login = () => {
   const [login, setLogin] = useState(false)
   const [register, setRegister] = useState(false)
   return (
+    <>
+      <Helmet>
+        <title>Login | CactusInk Blog</title>
+        <meta name="description" content="Your page description" />
+      </Helmet>
     <div className="flex flex-col items-center justify-center">
       <div className="relative top-0 left-0 w-full overflow-hidden line-height-0 transform rotate-180">
         <svg
@@ -30,10 +36,10 @@ const Login = () => {
       {!login && !register && (  
         <>     
       <div className="w-[50%] flex flex-col gap-5 absolute bottom-[5%] left-[30%] z-10">
-        <button className="w-[100%] font-pacifico bg-[#4B7755] hover:bg-[#AED1B2] text-white font-bold py-2 px-4 rounded-full" onClick={() => setRegister(true)}>
+        <button className="w-[100%] font-pacifico bg-[#4b7755d8] hover:bg-[#aed1b2e4] text-white font-bold py-2 px-4 rounded-full" onClick={() => setRegister(true)}>
           Sign up
         </button>
-        <button className="w-[100%] font-pacifico tracking-widest bg-[#C6D4C2] hover:bg-[#AED1B2] text-gray-500 font-bold py-2 px-4 rounded-full" onClick={() => setLogin(true)}>
+        <button className="w-[100%] font-pacifico tracking-widest bg-[#c6d4c2c6] hover:bg-[#aed1b2c7] text-gray-500 font-bold py-2 px-4 rounded-full" onClick={() => setLogin(true)}>
           Login
         </button>
       </div>
@@ -43,6 +49,7 @@ const Login = () => {
       </>
       )}    
     </div>
+    </>
   );
 };
 
