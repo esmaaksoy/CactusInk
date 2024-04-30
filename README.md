@@ -8,28 +8,27 @@ Users can register and share their articles. Users have the option to save their
 
 ## Tech/framework used
 ***Built with:*** <br>
-[React](https://reactjs.org/): A JavaScript library for building user interfaces.<br>
-[React-Redux](https://react-redux.js.org/): Official React bindings for Redux.<br>
-[Redux Toolkit](https://redux-toolkit.js.org/): The official, opinionated, batteries-included toolset for efficient Redux development.<br>
-[Redux-persist](https://github.com/rt2zz/redux-persist): Persist and rehydrate a redux store.<br>
-[Yup](https://github.com/jquense/yup): A JavaScript schema builder for value parsing and validation.<br>
-[Formik](https://formik.org/): Build forms in React, without the tears.<br>
-[react-icons](https://react-icons.github.io/react-icons/): Icon components for popular icon sets.<br>
-[React Router DOM](https://reactrouter.com/): Declarative routing for React.js.<br>
-
-***UI Libraries:***<br>
-[Quill](https://quilljs.com/): A modern WYSIWYG editor.<br>
-[PrimeReact](https://www.primefaces.org/primereact/): A collection of rich UI components for React.<br>
-[Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework.<br>
-[Heroicons/React](https://heroicons.com/): A set of free, MIT-licensed high-quality SVG icons for you to use in your web projects.<br>
-[Headless UI/React](https://headlessui.dev/): Completely unstyled, fully accessible UI components.<br>
-[React Toastify](https://github.com/fkhadra/react-toastify): A React library for toast notifications.<br>
+- **React**: A JavaScript library for building user interfaces.<br>
+- **React-Redux**: Official React bindings for Redux.<br>
+- **Redux Toolkit**: The official, opinionated, batteries-included toolset for efficient Redux development.<br>
+- **Redux-persist**: Persist and rehydrate a redux store.<br>
+- **Yup**: A JavaScript schema builder for value parsing and validation.<br>
+- **Formik**: Build forms in React, without the tears.<br>
+- **React Icons**: Icon components for popular icon sets.<br>
+- **React Router DOM**: Declarative routing for React.js.<br>
+- **Quill**: A modern WYSIWYG editor.<br>
+- **PrimeReact**: A collection of rich UI components for React.<br>
+- **Tailwind CSS**: A utility-first CSS framework.<br>
+- **Heroicons/React**: A set of free, MIT-licensed high-quality SVG icons for you to use in your web projects.<br>
+- **Headless UI/React**: Completely unstyled, fully accessible UI components.<br>
+- **React Toastify**: A React library for toast notifications.<br>
 
 ***Data Handling:***<br>
 [Axios](https://axios-http.com/): A promise-based HTTP client for the browser and Node.js.<br>
 ***Development Tools:***<br>
 [Postman](https://www.postman.com/): A collaboration platform for API development.<br>
 [Redux DevTools](https://redux.js.org/): DevTools for Redux.<br>
+
 ## How to use?
 ***Reading Blogs:***
 Browse through the blogs available on the home page.
