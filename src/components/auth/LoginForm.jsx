@@ -4,6 +4,7 @@ import { IoIosEyeOff } from "react-icons/io";
 import { object, string } from "yup";
 import useAuthCalls from "../../service/useAuthCalls";
 import { useState } from "react";
+
 const LoginForm = () => {
   const loginSchema = object({
     email: string()
@@ -20,8 +21,10 @@ const LoginForm = () => {
         "Password must contain at least one special character (@$!%*?&)."
       ),
   });
+  
   const { login } = useAuthCalls();
   const [show, setShow] = useState(false);
+  
   return (
     <div className="w-[50%] flex flex-col gap-3">
       <Formik

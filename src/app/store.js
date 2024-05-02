@@ -11,12 +11,12 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage/session"
+import storage from "redux-persist/lib/storage/session";
 const persistConfig = {
-    key: "root",
-    storage,
-  }
-  const persistedReducer = persistReducer(persistConfig, authReducer)
+  key: "root",
+  storage,
+};
+const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: persistedReducer,

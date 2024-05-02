@@ -73,8 +73,8 @@ const RegisterForm = () => {
   return (
     <div className="w-[100%] sm:w-[50%] flex flex-col gap-3 p-5">
       <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={registerSchema}
+        initialValues={{ email: "", password: "", username:"", firstName:"", lastName: "", city: "", bio: "", image:""}}
+        // validationSchema={registerSchema}
         onSubmit={(values, actions) => {
           register(values);
           actions.resetForm();

@@ -3,10 +3,12 @@ import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess } f
 import useAxios from "./useAxios";
 import { useDispatch } from "react-redux";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+
 const useAuthCalls = () => {
   const { axiosPublic, axiosWithToken } = useAxios();
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
   const login = async (userInfo) => {
     dispatch(fetchStart());
     try {
@@ -19,6 +21,7 @@ const useAuthCalls = () => {
       toastErrorNotify("Login attempt failed.");
     }
   };
+
   const logout = async () =>{
     dispatch(fetchStart())
     try {
@@ -31,6 +34,7 @@ const useAuthCalls = () => {
         toastErrorNotify("Logout attempt failed.");
     }
   }
+  
   const register = async (userInfo)=>{
     dispatch(fetchStart());
     try {

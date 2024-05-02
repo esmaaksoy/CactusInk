@@ -3,6 +3,7 @@ import { Editor } from "primereact/editor";
 import useBlogCalls from "../service/useBlogCalls";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 const BlogForm = ({
   title: prevTitle,
   content: prevContent,
@@ -20,24 +21,32 @@ const BlogForm = ({
     image: prevImage || "",
     isPublish: "",
   });
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
   const handleEditorChange = (e) => {
     setText(e.htmlValue);
     setData((prevData) => ({ ...prevData, content: e.htmlValue }));
   };
+
   const handleSubmit = (isPublish) => {
     if (id) {
       putBlogs(id, { ...data, isPublish });
+
     } else {
       postBlogs({ ...data, isPublish });
     }
   };
+
   useEffect(() => {
    getCategories()
   }, [])
   const navigate = useNavigate()
+
+ 
+
   return (
     <div>
       <div className="card flex mb-5">
@@ -75,7 +84,7 @@ const BlogForm = ({
         >
           <option value="">Please select</option>
           {categories.map((item, index) => (
-            <option key={index} value={item._id}>
+            <option key={index} value={item._id} >
               {item.name}
             </option>
           ))}
@@ -97,7 +106,7 @@ const BlogForm = ({
           Save as Draft
         </button>
         <button
-          onClick={() =>{handleSubmit(false); navigate("/profile")} }
+          onClick={() =>{handleSubmit(true); navigate("/profile")} }
           className="flex-1 tracking-widest bg-[#85B486] hover:bg-[#C6D4C2] text-white font-bold p-2 rounded-full"
         >
           Publish

@@ -11,9 +11,11 @@ import {
 } from "../features/blogSlice";
 import useAxios from "./useAxios";
 import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+
 const useBlogCalls = () => {
   const dispatch = useDispatch();
   const { axiosPublic, axiosWithToken} = useAxios();
+
   const getBlogs = async (url) => {
     dispatch(fetchStart());
     try {
@@ -25,6 +27,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+
   const getAllBlogs = async () => {
     try {
       const { data } = await axiosPublic("/blogs/");
@@ -32,6 +35,7 @@ const useBlogCalls = () => {
     } catch (error) {
     }
   };
+  
   const postBlogs = async (blogInfo) => {
     dispatch(fetchStart());
     try {
@@ -42,6 +46,7 @@ const useBlogCalls = () => {
       toastErrorNotify("Oops, an error occurred.");
     }
   };
+
   const putBlogs = async (id, blogInfo) => {
     dispatch(fetchStart());
     try {
@@ -53,6 +58,7 @@ const useBlogCalls = () => {
       toastErrorNotify("Update failed.");
     }
   };
+
   const postLike = async (id,url) => {
     dispatch(fetchStart());
     try {
@@ -63,6 +69,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+
   const getDetail = async (id) => {
     dispatch(fetchStart());
     try {
@@ -72,6 +79,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+
   const getCategories = async () => {
     dispatch(fetchStart());
     try {
@@ -81,6 +89,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+
   const getProfile = async (id) => {
     dispatch(fetchStart());
     try {
@@ -90,6 +99,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+
   const postComment = async (commentInfo) => {
     dispatch(fetchStart());
     try {
@@ -99,6 +109,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+  
   const deleteBlogs = async (id) => {
     dispatch(fetchStart());
     try {

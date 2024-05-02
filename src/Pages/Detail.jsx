@@ -21,14 +21,17 @@ import {
   PostCard,
   UserProfile,
 } from "../components/MyComponent";
+
 const Detail = () => {
   const { id } = useParams();
   const { detail } = useSelector((state) => state.blog);
   const { getDetail, deleteBlogs, getAllBlogs } = useBlogCalls();
+
   useEffect(() => {
     getDetail(id);
     getAllBlogs();
   }, []);
+
   const {
     content,
     title,
@@ -39,16 +42,20 @@ const Detail = () => {
     categoryId,
     _id,
   } = detail;
+
   const date = new Date(createdAt).toLocaleDateString("en-US");
   const { user } = useSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
+
   const handleButtonClick = () => {
     deleteBlogs(_id);
     navigate("/profile");
     toastSuccessNotify("Blog deleted");
   };
+
   const navigate = useNavigate();
   const { allBlog } = useSelector((state) => state.blog);
+
   return (
     <>
        <Helmet>

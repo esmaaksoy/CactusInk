@@ -53,6 +53,8 @@ const blogSlice = createSlice({
     },
   },
 });
+
 export const { fetchStart, fetchFail, getBlogSuccess, getAllBlogSuccess, getLikeSuccess,getDetailSuccess,getCategorySuccess,getProfileSuccess} =
   blogSlice.actions;
+
 export default blogSlice.reducer;

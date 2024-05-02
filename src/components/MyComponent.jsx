@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 import avatar from "../assets/avatar.webp";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+
+
 export const Header = ({ title }) => {
   return (
     <div className="border-b-2 border-white flex justify-center items-end">
@@ -21,6 +23,8 @@ export const Header = ({ title }) => {
     </div>
   );
 };
+
+
 export const UserProfile = () => {
   const { user } = useSelector((state) => state.auth);
 
@@ -45,6 +49,8 @@ export const UserProfile = () => {
     </div>
   );
 };
+
+
 export const CalendarComp = () => {
   const [date, setDate] = useState(null);
   return (
@@ -58,6 +64,8 @@ export const CalendarComp = () => {
     </div>
   );
 };
+
+
 export const PostCard = ({ content, createdAt, image, title, _id }) => {
   const date = new Date(createdAt).toLocaleDateString("en-US");
   const navigate=useNavigate()
@@ -76,6 +84,8 @@ export const PostCard = ({ content, createdAt, image, title, _id }) => {
     </article>
   );
 };
+
+
 export const NoData = ({ title }) => {
   return (
     <div className="flex items-end justify-center mt-20">

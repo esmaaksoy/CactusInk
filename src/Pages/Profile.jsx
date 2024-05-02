@@ -6,13 +6,17 @@ import { Header, NoData, UserProfile } from "../components/MyComponent";
 import NotFound from "./NotFound";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Helmet } from 'react-helmet';
+
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const { getProfile } = useBlogCalls();
   const { userBlog, loading, error } = useSelector((state) => state.blog);
+
   useEffect(() => {
     getProfile(user?._id);
   }, []);
+
+
   return (
     <>
      <Helmet>

@@ -30,7 +30,7 @@ const navigate = useNavigate()
             </h1>
           </div>
           <div className="flex items-center justify-end gap-4">
-            <div className="flex items-center sm:gap-4">
+          {user &&  <div className="flex items-center sm:gap-4">
               <NavLink
                 to="/new-blog/"
                 className="block shrink-0 sm:rounded-full sm:bg-white p-2.5 text-[#4B7755] shadow-sm hover:bg-[#AED1B2] hover:text-white"
@@ -38,7 +38,8 @@ const navigate = useNavigate()
                 {write}
               </NavLink>
               {line}         
-            </div>
+            </div>}
+           
              <Menu as="div" className="relative">
                   <div>
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
