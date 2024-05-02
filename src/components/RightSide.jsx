@@ -38,8 +38,8 @@ const RightSide = ({ search, setSearch, first, rows }) => {
         </button>
       </div>
       <CalendarComp />
-      <Header title={"popular post"} />
-      {allBlog.slice(0, 3).map((item, index) => (
+      <Header title={"latest post"} />
+      {allBlog.slice(-3).map((item, index) => (
         <PostCard key={index} {...item} />
       ))}
     </div>
