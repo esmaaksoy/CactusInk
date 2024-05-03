@@ -48,7 +48,7 @@ const Card = ({
         <img
           src={image}
           alt={title}
-          className="pt-3 sm:w-full h-[200px] lg:h-[400px] object-cover"
+          className="pt-3 w-full h-[200px] lg:h-[400px] object-cover"
         />
       </div>
       <div>
